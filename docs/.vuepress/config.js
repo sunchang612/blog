@@ -19,6 +19,10 @@ module.exports = {
         text: 'js 算法',
         link: '/js-algorithm/'
       },
+      {
+        text: 'react',
+        link: '/react/'
+      }
     ],
     sidebar: {
       '/javascript/': [

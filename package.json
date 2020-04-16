@@ -1,0 +1,17 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy": "./deploy.sh"
+  },
+  "dependencies": {
+    "view-design": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.0"
+  }
+}

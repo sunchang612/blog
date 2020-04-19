@@ -11,14 +11,16 @@ cache:
 # S: Build LifeCycle
 install:
   - yarn
+  - yarn run docs:build
 
 # before_script:
 
 script:
   # - npm run eslint # 工程测试
   # - npm run dev # 工程测试
-  - yarn add vuepress
-  - yarn run docs:build # 工程构建打包
+  # - yarn add vuepress
+  # - yarn run docs:build # 工程构建打包
+  - bash ./deploy.sh
 
 git:
   depth: false
@@ -32,9 +34,9 @@ branches:
 
 deploy:
   provider: pages
-  github-token: $blog-token
-  local-dir: docs/.vuepress/dist/
-  skip-cleanup: true
-  target-branch: gh-pages
+  # github-token: $blog-token
+  # local-dir: docs/.vuepress/dist/
+  # skip-cleanup: true
+  # target-branch: gh-pages
   on:
     branch: master # 当master分支有push事件的时候执行deploy流程

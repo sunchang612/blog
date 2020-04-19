@@ -15,6 +15,3 @@ after_success:
   - git commit -m 'deploy'
   - git push --quiet --force "https://${blogToken}@github.com/sunchang1996/blog.git" master:gh-pages
 
-branches:
-  only:
-    - docs

@@ -46,7 +46,8 @@ module.exports = {
             '/js-algorithm/',
             '/js-algorithm/str-reverse.md',
             '/js-algorithm/flower.md',
-            '/js-algorithm/gray-code.md'
+            '/js-algorithm/gray-code.md',
+            '/js-algorithm/regex-str.md',
           ]
         },
       ],

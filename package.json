@@ -8,10 +8,8 @@
     "docs:build": "vuepress build docs",
     "deploy": "./deploy.sh"
   },
-  "dependencies": {
-    "view-design": "^4.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "babel-plugin-import": "^1.13.0"
+    "vuepress": "^1.4.1"
   }
 }

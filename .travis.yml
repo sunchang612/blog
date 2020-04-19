@@ -16,8 +16,8 @@ install:
 
 script:
   # - npm run eslint # 工程测试
-  - npm run dev # 工程测试
-  - npm run build # 工程构建打包
+  # - npm run dev # 工程测试
+  - npm run docs:build # 工程构建打包
 
 git:
   depth: false

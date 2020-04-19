@@ -4,7 +4,10 @@ module.exports = {
   // theme: 'awesome',
   base: '/blog/',
   markdown: {
-    lineNumbers: false
+    lineNumbers: true
+  },
+  themeConfig: {
+    smoothScroll: true
   },
   repo: 'https://sunchang1996.github.io/blog',
   repoLabel: 'Github',
@@ -41,7 +44,9 @@ module.exports = {
           collapsable: false,
           children: [
             '/js-algorithm/',
-            '/js-algorithm/str-reverse.md'
+            '/js-algorithm/str-reverse.md',
+            '/js-algorithm/flower.md',
+            '/js-algorithm/gray-code.md'
           ]
         },
       ],

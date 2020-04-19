@@ -1,0 +1,39 @@
+language: node_js
+
+node_js:
+  - node
+
+# Travis-CI Caching
+cache:
+  directories:
+    - node_modules
+
+# S: Build LifeCycle
+install:
+  - yarn
+
+# before_script:
+
+script:
+  # - npm run eslint # 工程测试
+  - npm run dev # 工程测试
+  - npm run build # 工程构建打包
+
+git:
+  depth: false
+
+branches:
+  only:
+    - master
+
+# before_deploy:
+#   - yarn build
+
+deploy:
+  provider: pages
+  github-token: 05eeebdb914f2c0032c6aa124ac94a575655e434
+  local-dir: ./docs/.vuepress/dist/
+  skip-cleanup: true
+  target-branch: gh-pages
+  on:
+    branch: master # 当master分支有push事件的时候执行deploy流程

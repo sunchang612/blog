@@ -36,13 +36,14 @@
 思路:
 1. 拿到数组先进行排序（升序和降序都可以）
 2. 循环遍历数组，先拿第一位和第二位数进行比较，依次类推，在拿第二位数和第三位数比较。最后形成一个二维数组
-![image.png](https://upload-images.jianshu.io/upload_images/13129256-9587e1bb469a397c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<img src="https://upload-images.jianshu.io/upload_images/13129256-9587e1bb469a397c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+
 3. 判断每个数组是否是 最小length 的倍数
-```
+```js
   const isSuccess = dist.every(i => i.length % min === 0)
 ```
 最后的代码:
-```
+```js
 function cardNumber(ary) {
   // 先把数组排序
   const resort = ary.sort((a, b) => a - b)
@@ -82,13 +83,13 @@ function cardNumber(ary) {
 const result2 = cardNumber([1,2,3,4,4,4,4,3,2,1])
 console.log(result2) // true
 ```
-![image.png](https://i.guancha.cn/news/social/2020/01/20/20200120150924175.jpg)
+<img src="https://i.guancha.cn/news/social/2020/01/20/20200120150924175.jpg"/>
 
 ```但是：```
 - 上面的代码还是有问题了，比如 如果最小 length 是 1 ，那就...
 
 最后稍微严禁的代码：
-```
+``` js
 function cardNumber(ary) {
   // 当 数组的长度小于 2 ，就直接 返回 false
   if (ary.length < 2) return false

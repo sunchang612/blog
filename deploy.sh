@@ -16,6 +16,9 @@ git init
 git add -A
 git commit -m 'deploy'
 
+git config --local user.name sunchang1996
+git config --local user.email sunchang612@gmail.com
+
 # 如果发布到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 

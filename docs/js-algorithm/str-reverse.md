@@ -17,7 +17,7 @@
 2. 对数据进行遍历，把每个数组中的元素进行翻转
 3. 在把数组转成字符串
 
-```
+```js
  function strReverse (str) {
     // 1. 字符串按空格进行分割
   let arr = str.split(' ')
@@ -31,7 +31,7 @@
  s'teL ekat edoCteeL tsetnoc
 ```
 - 上面代码比较冗余，可以简写为:
-```
+``` js
  function strReverse (str) {
    return str.split(' ').map(i => i.split('').reverse().join('')).join(' ')
  }
@@ -40,16 +40,16 @@
  s'teL ekat edoCteeL tsetnoc
 ```
 - 也可以使用正则的方式分割字符串
-```
+``` js
 function strReverse (str) {
   return str.split(/\s/g).map(i => i.split('').reverse().join('')).join(' ')
 }
- const result = strReverse('Let\'s take LeetCode contest')
- console.log(result)
- s'teL ekat edoCteeL tsetnoc
+const result = strReverse('Let\'s take LeetCode contest')
+console.log(result)
+s'teL ekat edoCteeL tsetnoc
 ```
 - 或 使用 match
-```
+```js
 function strReverse (str) {
   return str.match(/[\w']+/g).map(i => i.split('').reverse().join('')).join(' ')
 }

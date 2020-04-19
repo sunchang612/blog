@@ -1,16 +1,18 @@
 ---
 home: true
 lang: zh-CN
-heroText: A  Personal Blog
-heroImage: /logo.jpg
-actionText: 开始 →
-actionLink: /interview/
+heroText: 记录生活，记录学习
+heroImage: /yingmu.jpg
+actionText: 重新出发 ->
+actionLink: /javascript/
 features:
-- title: A Blog
-  details: 专注写作前端博客，记录日常所得。
-- title: For Me
-  details: 故九万里，则风斯在下矣，而后乃今培风；背负青天，而莫之夭阏者，而后乃今将图南。
-- title: For Interview
-  details: 广州，已入坑ღ( ´･ᴗ･` )比心
-footer: Copyright © 2019-present Wangtunan
+- title: JavaScript
+  details: 重新学习JavaScript，记录学习过程及分享。
+- title: react 
+  details: 记录学习 react 知识及分享。
+- title: Vue
+  details: 记录学习 Vue 知识及分享。
+- title: JavaScript 算法与数据结构
+  details: 学习 JavaScript 算法与数据结构，记录学习过程及分享。
+footer: Copyright © 2020-present SunChang
 ---

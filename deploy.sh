@@ -16,15 +16,10 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git config --local user.name sunchang1996
-git config --local user.email sunchang612@gmail.com
-
 # 如果发布到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f https://${blog-token}@github.com:sunchang1996/blog.git master:gh-pages
-
-# git push -f git@github.com:sunchang1996/blog.git master:gh-pages
+git push -f git@github.com:sunchang1996/blog.git master:gh-pages
 
 cd -

@@ -31,7 +31,7 @@ branches:
 
 deploy:
   provider: pages
-  github-token: 05eeebdb914f2c0032c6aa124ac94a575655e434
+  github-token: $GITHUB_TOKEN
   local-dir: ./docs/.vuepress/dist/
   skip-cleanup: true
   target-branch: gh-pages

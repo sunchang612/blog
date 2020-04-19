@@ -32,7 +32,7 @@ branches:
 
 deploy:
   provider: pages
-  github-token: $GITHUB_TOKEN
+  github-token: blog-token
   local-dir: ./docs/.vuepress/dist/
   skip-cleanup: true
   target-branch: gh-pages

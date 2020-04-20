@@ -22,7 +22,30 @@
       }
       return arr
     }
+
+    function selectionSort(arr) {
+      const len = arr.length
+      let min // 记录最小的值
+      let temp
+
+      for (let i = 0; i < len - 1; i++) {
+        min = i // 每次取出一个值
+        for (let j = i + 1; j < len; j++) {
+          // 拿当前的值跟 取出最小的值对比，如果小于它，就替换最小的值
+          if (arr[j] < arr[min]) {
+            min = j
+          }
+        }
+        // 交换位置
+        temp = arr[i]
+        arr[i] = arr[min]
+        arr[min] = temp      
+      }
+      return arr
+    }
+
     console.log(bubbling([1,5,2,7,9,3,6,8,4]))
+    console.log(selectionSort([1,5,2,7,9,3,6,8,4]))
   </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 ![bubbling.gif](https://upload-images.jianshu.io/upload_images/13129256-5a0e564f193b2215.gif?imageMogr2/auto-orient/strip)
 
 - 最后的实现代码
-```
+```js
 function bubbling(arr) {
   // 根据数组长度，每次递减的方式 循环
   for (let i = arr.length; i > 0; i--) {
@@ -28,6 +28,7 @@ function bubbling(arr) {
   }
   return arr
 }
+
 console.log(bubbling([1, 5, 6, 7,9, 8, 3, 2, 4]))
 // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```

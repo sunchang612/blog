@@ -49,6 +49,7 @@ module.exports = {
             '/js-algorithm/gray-code.md',
             '/js-algorithm/regex-str.md',
             '/js-algorithm/bubbling.md',
+            '/js-algorithm/selectionSort.md',
           ]
         },
       ],

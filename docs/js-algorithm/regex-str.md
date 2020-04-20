@@ -24,7 +24,7 @@
 
 
 - 这个用正则的方式，比较简单
-```
+```js
 function repeatedSubstringPattern (str) {
   return /^(\w+)\1+$/.test(str)
 }

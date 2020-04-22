@@ -3,6 +3,17 @@ module.exports = {
   description: '阿畅的博客',
   // theme: 'awesome',
   base: '/blog/',
+  plugins: [
+    'vuepress-plugin-nprogress',
+    [
+      'vuepress-plugin-clean-urls',
+      {
+        normalSuffix: '/',
+        indexSuffix: '/',
+        notFoundPath: '/404.html',
+      },
+    ],
+  ],
   markdown: {
     lineNumbers: true
   },

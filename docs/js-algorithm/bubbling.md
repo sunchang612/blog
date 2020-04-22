@@ -1,4 +1,4 @@
-# JavaScript 冒泡排序
+# 冒泡排序
 
 冒泡排序是 JavaScript 基础的排序算法
 

@@ -14,10 +14,10 @@ module.exports = {
   themeConfig: {
     nav: [
       {text: '首页', link: '/'},
-      {
-        text: 'JavaScript',
-        link: '/javascript/'
-      },
+      // {
+      //   text: 'JavaScript',
+      //   link: '/javascript/'
+      // },
       {
         text: 'js 算法',
         link: '/js-algorithm/'
@@ -25,18 +25,31 @@ module.exports = {
       {
         text: 'react',
         link: '/react/'
+      },
+      {
+        text: 'webpack',
+        link: '/webpack/'
       }
     ],
     sidebar: {
-      '/javascript/': [
+      // '/javascript/': [
+      //   {
+      //     title: 'JavaScript 算法',
+      //     collapsable: false,
+      //     children: [
+      //       '/javascript/',
+      //       '/javascript/HTML'
+      //     ]
+      //   },
+      // ],
+      '/webpack/': [
         {
-          title: 'JavaScript 算法',
+          title: '学习 webpack',
           collapsable: false,
           children: [
-            '/javascript/',
-            '/javascript/HTML'
+            '/webpack/',
           ]
-        },
+        }
       ],
       '/js-algorithm/': [
         {

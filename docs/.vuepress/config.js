@@ -4,15 +4,7 @@ module.exports = {
   // theme: 'awesome',
   base: '/blog/',
   plugins: [
-    'vuepress-plugin-nprogress',
-    [
-      'vuepress-plugin-clean-urls',
-      {
-        normalSuffix: '/',
-        indexSuffix: '/',
-        notFoundPath: '/404.html',
-      },
-    ],
+    'vuepress-plugin-nprogress'
   ],
   markdown: {
     lineNumbers: true
@@ -41,7 +33,7 @@ module.exports = {
         text: 'webpack',
         link: '/webpack/'
       },
-      {
+      {   
         text: 'nodejs',
         items: [
           { text: 'sequelize', link: '/node/sequelize/' }
@@ -68,7 +60,7 @@ module.exports = {
           title: '学习 webpack',
           collapsable: false,
           children: [
-            '/webpack/',
+            '/webpack/', 
           ]
         }
       ],

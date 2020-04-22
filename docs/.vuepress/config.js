@@ -29,6 +29,16 @@ module.exports = {
       {
         text: 'webpack',
         link: '/webpack/'
+      },
+      {
+        text: 'nodejs',
+        items: [
+          { text: 'sequelize', link: '/node/sequelize/' }
+        ]
+      },
+      {
+        text: 'GitHub',
+        link: 'https://github.com/sunchang1996/blog'
       }
     ],
     sidebar: {
@@ -66,6 +76,15 @@ module.exports = {
           ]
         },
       ],
+      '/node/sequelize/': [
+        {
+          title: 'Sequesize',
+          collapsable: false,
+          children: [
+            '/node/sequelize/'
+          ]
+        }
+      ]
     }
   }
 }

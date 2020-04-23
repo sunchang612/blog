@@ -79,6 +79,8 @@ module.exports = {
             '/js-algorithm/isMatch.md',
             '/js-algorithm/letterCombinations.md',
             '/js-algorithm/countBinarySubstrings.md',
+            '/js-algorithm/sortArrayByParity.md',
+            '/js-algorithm/maximumGap.md',
           ]
         },
       ],

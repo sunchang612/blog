@@ -2,7 +2,9 @@
 [![Build Status](https://travis-ci.org/sunchang1996/blog.svg?branch=master)](https://travis-ci.org/sunchang1996/blog)
 
 # JavaScript 算法
-  - [JavaScript 冒泡排序 (2020.4.21)](https://sunchang1996.github.io/blog/js-algorithm/bubbling.html')
+  - [JavaScript 按奇偶排序数组 (2020.4.23)](https://sunchang1996.github.io/blog/js-algorithm/sortArrayByParity.html)
+
+  - [JavaScript 冒泡排序 (2020.4.21)](https://sunchang1996.github.io/blog/js-algorithm/bubbling.html)
   - [JavaScript 快速排序 (2020.4.21)](https://sunchang1996.github.io/blog/js-algorithm/selectionSort.html)
 
   - [JavaScript 种花问题 (2020.4.19)](https://sunchang1996.github.io/blog/js-algorithm/flower.html)

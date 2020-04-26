@@ -26,3 +26,6 @@
 
 # webpack
 - [webpack 知识总结(2020.04.6)](https://sunchang1996.github.io/blog/webpack/)
+
+# axios
+- [封装 axios (2020.04.6)](https://sunchang1996.github.io/blog/react/axios.html)

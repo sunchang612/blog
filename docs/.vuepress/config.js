@@ -45,16 +45,16 @@ module.exports = {
       }
     ],
     sidebar: {
-      // '/javascript/': [
-      //   {
-      //     title: 'JavaScript 算法',
-      //     collapsable: false,
-      //     children: [
-      //       '/javascript/',
-      //       '/javascript/HTML'
-      //     ]
-      //   },
-      // ],
+      '/react/': [
+        {
+          title: '学习 react',
+          collapsable: false,
+          children: [
+            '/react/',
+            '/react/axios.md'
+          ]
+        },
+      ],
       '/webpack/': [
         {
           title: '学习 webpack',

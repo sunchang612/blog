@@ -1,8 +1,11 @@
 # 记录学习工作
 [![Build Status](https://travis-ci.org/sunchang1996/blog.svg?branch=master)](https://travis-ci.org/sunchang1996/blog)
 
+# react 
+  - [深入理解 setState 机制 (2020.4.07)](https://sunchang1996.github.io/blog/react/)
+
 # JavaScript 算法
-  - [JavaScript 最大间距 (2020.4.24)](https://sunchang1996.github.io/blog/js-algorithm/maximumGap.html)
+  - [JavaScript 数组最大间距 (2020.4.24)](https://sunchang1996.github.io/blog/js-algorithm/maximumGap.html)
 
   - [JavaScript 按奇偶排序数组 (2020.4.23)](https://sunchang1996.github.io/blog/js-algorithm/sortArrayByParity.html)
 
@@ -20,4 +23,6 @@
 
   - [JavaScript 反转字符串中的单词 (2020.4.12)](https://sunchang1996.github.io/blog/js-algorithm/str-reverse.html)
   - [JavaScript 计数二进制子串 (2020.4.12)](https://sunchang1996.github.io/blog/js-algorithm/countBinarySubstrings.html)
-# 
+
+# webpack
+- [webpack 知识总结(2020.04.6)](https://sunchang1996.github.io/blog/webpack/)

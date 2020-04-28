@@ -32,7 +32,7 @@ function findKthLargest(ary, key) {
 - `注意` 这里用冒泡排序不用遍历所有之后，在取出第 key 个值，可以直接排序中实现
 > 因为冒泡排序每次都会把最大值，放到最后，我们只要排序到要找的那个 key 值，然后返回就可以了，不用排序所有的值
 
-```
+```js
 function findKthLargest(ary, key) {
   const len = ary.length - 1
   for (let i = len; i > len - key; i--) {

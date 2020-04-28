@@ -12,6 +12,6 @@ after_success:
   - git config --global user.name "sunchang1996"
   - git config --global user.email "sunchang612@gmail.com"
   - git add .
-  - git commit -m 'deploy'
-  - git push --quiet --force "https://${blogToken}@github.com/sunchang1996/blog.git" master:gh-pages
+  - git commit -m 'update'
+  - git push --quiet --force-with-lease "https://${blogToken}@github.com/sunchang1996/blog.git" master:gh-pages
 

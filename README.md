@@ -5,6 +5,7 @@
   - [深入理解 setState 机制 (2020.4.07)](https://sunchang1996.github.io/blog/react/)
 
 # JavaScript 算法
+  - [JavaScript 数组中的第K个最大元素 (2020.4.29)](https://sunchang1996.github.io/blog/js-algorithm/findKthLargest.html)
   - [JavaScript 数组最大间距 (2020.4.24)](https://sunchang1996.github.io/blog/js-algorithm/maximumGap.html)
 
   - [JavaScript 按奇偶排序数组 (2020.4.23)](https://sunchang1996.github.io/blog/js-algorithm/sortArrayByParity.html)
@@ -28,4 +29,4 @@
 - [webpack 知识总结(2020.04.6)](https://sunchang1996.github.io/blog/webpack/)
 
 # axios
-- [封装 axios (2020.04.6)](https://sunchang1996.github.io/blog/react/axios.html)
+- [封装 axios (2020.04.27)](https://sunchang1996.github.io/blog/react/axios.html)

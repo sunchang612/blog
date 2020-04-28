@@ -81,6 +81,7 @@ module.exports = {
             '/js-algorithm/countBinarySubstrings.md',
             '/js-algorithm/sortArrayByParity.md',
             '/js-algorithm/maximumGap.md',
+            '/js-algorithm/findKthLargest.md',
           ]
         },
       ],

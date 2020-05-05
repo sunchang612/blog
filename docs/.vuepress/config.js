@@ -83,6 +83,7 @@ module.exports = {
             '/js-algorithm/maximumGap.md',
             '/js-algorithm/findKthLargest.md',
             '/js-algorithm/firstMissingPositive.md',
+            '/js-algorithm/restoreIpAddresses.md',
           ]
         },
       ],

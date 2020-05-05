@@ -82,6 +82,7 @@ module.exports = {
             '/js-algorithm/sortArrayByParity.md',
             '/js-algorithm/maximumGap.md',
             '/js-algorithm/findKthLargest.md',
+            '/js-algorithm/firstMissingPositive.md',
           ]
         },
       ],

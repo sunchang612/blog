@@ -84,6 +84,7 @@ module.exports = {
             '/js-algorithm/findKthLargest.md',
             '/js-algorithm/firstMissingPositive.md',
             '/js-algorithm/restoreIpAddresses.md',
+            '/js-algorithm/findSubstring.md',
           ]
         },
       ],

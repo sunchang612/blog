@@ -4,7 +4,17 @@ module.exports = {
   // theme: 'awesome',
   base: '/blog/',
   plugins: [
-    'vuepress-plugin-nprogress'
+    'vuepress-plugin-nprogress',
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'tip',
+        defaultTitle: {
+          '/': '示例',
+          '/zh/': '示例',
+        },
+      },
+    ],
   ],
   markdown: {
     lineNumbers: true
@@ -22,7 +32,7 @@ module.exports = {
       //   link: '/javascript/'
       // },
       {
-        text: 'js 算法',
+        text: 'js 算法与数据结构',
         link: '/js-algorithm/'
       },
       {
@@ -82,7 +92,7 @@ module.exports = {
       ],
       '/js-algorithm/': [
         {
-          title: 'JavaScript 算法',
+          title: 'JavaScript 算法与数据结构',
           collapsable: false,
           children: [
             '/js-algorithm/',
@@ -101,8 +111,9 @@ module.exports = {
             '/js-algorithm/firstMissingPositive.md',
             '/js-algorithm/restoreIpAddresses.md',
             '/js-algorithm/findSubstring.md',
+            '/js-algorithm/calPoints.md',
           ]
-        },
+        }
       ],
       '/node/sequelize/': [
         {

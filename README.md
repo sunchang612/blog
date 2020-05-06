@@ -33,3 +33,8 @@
 
 # axios
 - [封装 axios (2020.04.27)](https://sunchang1996.github.io/blog/react/axios.html)
+
+# Vue
+
+### Vue 项目实战
+- [vue-awesome-swiper 自定义分页器 (2020.05.06)](https://sunchang1996.github.io/blog/Vue/combat/)

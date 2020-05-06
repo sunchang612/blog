@@ -30,6 +30,13 @@ module.exports = {
         link: '/react/'
       },
       {
+        text: 'Vue',
+        items: [
+          { text: 'Vue 原理', link: '/Vue/principle/' },
+          { text: 'Vue 项目实战', link: '/Vue/combat/' }
+        ]
+      },
+      {
         text: 'webpack',
         link: '/webpack/'
       },
@@ -52,6 +59,15 @@ module.exports = {
           children: [
             '/react/',
             '/react/axios.md'
+          ]
+        },
+      ],
+      '/Vue/': [
+        {
+          title: 'Vue',
+          collapsable: false,
+          children: [
+            '/Vue/combat/',
           ]
         },
       ],

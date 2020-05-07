@@ -112,6 +112,7 @@ module.exports = {
             '/js-algorithm/restoreIpAddresses.md',
             '/js-algorithm/findSubstring.md',
             '/js-algorithm/calPoints.md',
+            '/js-algorithm/maximalRectangle.md',
           ]
         }
       ],

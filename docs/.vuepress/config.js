@@ -113,6 +113,7 @@ module.exports = {
             '/js-algorithm/findSubstring.md',
             '/js-algorithm/calPoints.md',
             '/js-algorithm/maximalRectangle.md',
+            '/js-algorithm/CircularQueue.md',
           ]
         }
       ],

@@ -5,6 +5,7 @@
   - [深入理解 setState 机制 (2020.4.07)](https://sunchang1996.github.io/blog/react/)
 
 # JavaScript 数据结构与算法
+  - [JavaScript 任务调度器 (2020.5.11)](https://sunchang1996.github.io/blog/js-algorithm/leastInterval.html)
   - [JavaScript 循环队列 (2020.5.10)](https://sunchang1996.github.io/blog/js-algorithm/CircularQueue.html)
   - [JavaScript 栈 最大矩形 (2020.5.8) 难](https://sunchang1996.github.io/blog/js-algorithm/maximalRectangle.html)
   - [JavaScript 栈 棒球比赛 (2020.5.7)](https://sunchang1996.github.io/blog/js-algorithm/calPoints.html)

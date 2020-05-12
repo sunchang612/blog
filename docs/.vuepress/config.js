@@ -1,7 +1,20 @@
 module.exports = {
-  title: '阿畅 blog',
-  description: '阿畅的博客',
+  title: '阿畅的博客',
+  description: 'JavaScript，前端，Vue，react，webpack，HTML，CSS等技术分享',
   // theme: 'awesome',
+  head: [
+    ['script', {}, `
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?831c09097cdcc6b28d4d8b82e7a2603b";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    `],
+    ["meta", {name: "author", content: "achang"}],
+    ["meta", {name: "keywords", content: "前端全栈知识体系， JavaScript， Vue， react， webpack， HTML， CSS，JavaScript算法"}],
+  ],
   base: '/blog/',
   plugins: [
     'vuepress-plugin-nprogress',
@@ -116,6 +129,7 @@ module.exports = {
             '/js-algorithm/CircularQueue.md',
             '/js-algorithm/leastInterval.md',
             '/js-algorithm/sortList.md',
+            '/js-algorithm/hasCycle.md',
           ]
         }
       ],

@@ -115,6 +115,7 @@ module.exports = {
             '/js-algorithm/maximalRectangle.md',
             '/js-algorithm/CircularQueue.md',
             '/js-algorithm/leastInterval.md',
+            '/js-algorithm/sortList.md',
           ]
         }
       ],

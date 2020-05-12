@@ -129,6 +129,7 @@ module.exports = {
             '/js-algorithm/CircularQueue.md',
             '/js-algorithm/leastInterval.md',
             '/js-algorithm/sortList.md',
+            '/js-algorithm/spiralOrder.md',
           ]
         }
       ],

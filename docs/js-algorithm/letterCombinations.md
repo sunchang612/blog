@@ -4,7 +4,7 @@
 
 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
 
-![image.png](https://upload-images.jianshu.io/upload_images/13129256-f8771db06bac4b36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<img src="https://upload-images.jianshu.io/upload_images/13129256-f8771db06bac4b36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" art=""/>
 
 
 示例:
@@ -66,4 +66,4 @@ function mergeLetters(str) {
 const result = mergeLetters('234')
 
 ```
-![image.png](https://upload-images.jianshu.io/upload_images/13129256-2fcccad9c120ffb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<img src="https://upload-images.jianshu.io/upload_images/13129256-2fcccad9c120ffb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" art="" />

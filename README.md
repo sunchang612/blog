@@ -28,7 +28,7 @@
   - [JavaScript 正则表达式匹配 (2020.4.19)](https://sunchang1996.github.io/blog/js-algorithm/isMatch.html)
 
   - [JavaScript 电话号码的字母组合 (2020.4.14)](https://sunchang1996.github.io/blog/js-algorithm/letterCombinations.html)
-  - [JavaScript 卡牌分组 (2020.4.14)](https://sunchang1996.github.io/blog/js-algorithm/letterCombinations.html)
+  - [JavaScript 卡牌分组 (2020.4.14)](https://sunchang1996.github.io/blog/js-algorithm/)
 
 
   - [JavaScript 反转字符串中的单词 (2020.4.12)](https://sunchang1996.github.io/blog/js-algorithm/str-reverse.html)

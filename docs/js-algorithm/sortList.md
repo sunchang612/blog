@@ -62,7 +62,6 @@ let partion = (begin, end) => {
   // 下一个指针位置
   let q = begin.next
 
-  console.log('寻找--->', val, p , q)
   // 如果 有下一个
   while(q !== end) {
     // 如果下一个数，小于当前的 val p 指针指向下一个

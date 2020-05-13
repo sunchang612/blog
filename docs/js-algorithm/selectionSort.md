@@ -9,7 +9,8 @@
 3. 重复第二步，直到所有元素均排序完毕。
 
 - 动态演示
-![selectionSort.gif](https://upload-images.jianshu.io/upload_images/13129256-d66a91dcbc4d5cf0.gif?imageMogr2/auto-orient/strip)
+<img src="https://upload-images.jianshu.io/upload_images/13129256-d66a91dcbc4d5cf0.gif?imageMogr2/auto-orient/strip" alt="selectionSort.gif">
+
 
 - 代码：
 ```js

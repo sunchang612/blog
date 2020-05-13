@@ -40,7 +40,9 @@
  举例说明：
   14^15  (14 的二进制  1110,15 的二进制   1111   14^15的结果  0001 -> 结果1)
   12 和 5 进行位异或运算，则返回值为 9  为什么 ?
-![](https://upload-images.jianshu.io/upload_images/13129256-2e558495dc653e96.gif?imageMogr2/auto-orient/strip)
+
+<img src="https://upload-images.jianshu.io/upload_images/13129256-2e558495dc653e96.gif?imageMogr2/auto-orient/strip" alt="image">
+
 
 ##### 然后在根据动态正则进行匹配 
 ```js
@@ -71,7 +73,6 @@
 
   // 通过 for 循环控制程序运行的流程
   for (let i = 0; i < str.length - 1; i++) {
-    console.log('i ----->', str.slice(i))
     let sub = match(str.slice(i))
     if (sub) {
       ary.push(sub)

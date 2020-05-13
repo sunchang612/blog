@@ -130,6 +130,7 @@ module.exports = {
             '/js-algorithm/leastInterval.md',
             '/js-algorithm/sortList.md',
             '/js-algorithm/spiralOrder.md',
+            '/js-algorithm/rotate.md',
           ]
         }
       ],

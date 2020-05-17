@@ -5,6 +5,7 @@
   - [深入理解 setState 机制 (2020.4.07)](https://sunchang1996.github.io/blog/react/)
 
 # JavaScript 数据结构与算法
+  - [JavaScript 堆排序 (2020.5.17)](https://sunchang1996.github.io/blog/js-algorithm/heapsort.html)
   - [JavaScript 对称二叉树 (2020.5.16)](https://sunchang1996.github.io/blog/js-algorithm/isSymmetric.html)
   - [JavaScript 旋转图片 (2020.5.14)](https://sunchang1996.github.io/blog/js-algorithm/rotate.html)
   - [JavaScript 螺旋矩阵 (2020.5.13)](https://sunchang1996.github.io/blog/js-algorithm/spiralOrder.html)

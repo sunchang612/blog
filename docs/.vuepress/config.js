@@ -132,6 +132,7 @@ module.exports = {
             '/js-algorithm/spiralOrder.md',
             '/js-algorithm/rotate.md',
             '/js-algorithm/isSymmetric.md',
+            '/js-algorithm/heapsort.md',
           ]
         }
       ],

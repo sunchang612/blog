@@ -3,6 +3,7 @@
 
 # react 
   - [深入理解 setState 机制 (2020.4.07)](https://sunchang1996.github.io/blog/react/)
+  - [学习 React Hooks](https://sunchang1996.github.io/blog/react/hooks.html)
 
 # JavaScript 数据结构与算法
   - [JavaScript 堆排序 (2020.5.17)](https://sunchang1996.github.io/blog/js-algorithm/heapsort.html)

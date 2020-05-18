@@ -77,11 +77,12 @@ module.exports = {
     sidebar: {
       '/react/': [
         {
-          title: '学习 react',
+          title: 'react 基础与原理',
           collapsable: false,
           children: [
             '/react/',
-            '/react/axios.md'
+            '/react/axios.md',
+            '/react/hooks.md'
           ]
         },
       ],

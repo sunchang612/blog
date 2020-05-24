@@ -1,1 +1,1 @@
-# JavaScript 代码
+# 重新学习 JavaScript 

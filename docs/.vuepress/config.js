@@ -40,10 +40,10 @@ module.exports = {
   themeConfig: {
     nav: [
       {text: '首页', link: '/'},
-      // {
-      //   text: 'JavaScript',
-      //   link: '/javascript/'
-      // },
+      {
+        text: 'JavaScript',
+        link: '/javascript/'
+      },
       {
         text: 'js 算法与数据结构',
         link: '/js-algorithm/'
@@ -75,6 +75,16 @@ module.exports = {
       }
     ],
     sidebar: {
+      '/javascript/': [
+        {
+          title: '重新学习 JavaScript',
+          collapsable: false,
+          children: [
+            '/javascript/',
+            '/javascript/Hoisting.md'
+          ]
+        }
+      ],
       '/react/': [
         {
           title: 'react 基础与原理',

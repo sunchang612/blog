@@ -81,7 +81,8 @@ module.exports = {
           collapsable: false,
           children: [
             '/javascript/',
-            '/javascript/Hoisting.md'
+            '/javascript/Hoisting.md',
+            '/javascript/Factory.md'
           ]
         }
       ],

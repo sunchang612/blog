@@ -7,8 +7,10 @@
   
 # JavaScript
   - [变量提升](https://sunchang612.github.io/blog/javascript/Hoisting.html)
+  - [JavaScript 堆栈内存及内存释放](https://github.com/sunchang612/blog/issues/3)
   ## JavaScript 设计模式
     - [工厂模式](https://sunchang612.github.io/blog/javascript/Factory.html)
+  
 
 # JavaScript 数据结构与算法
   - [JavaScript 堆排序 (2020.5.17)](https://sunchang612.github.io/blog/js-algorithm/heapsort.html)
@@ -54,6 +56,9 @@
 ### Vue 项目实战
 - [vue-awesome-swiper 自定义分页器 (2020.05.06)](https://sunchang612.github.io/blog/Vue/combat/)
 
+# Chrome 
+- [DevTools 不常用的小技巧](https://github.com/sunchang612/blog/issues/2)
 # 半夜的碎语
 #### 有一天学习学到搞个通宵  2020.05.07 凌晨
 #### 有人会陷入一种死循环，感觉每天很多工作很累很辛苦，但其实在别人看来没一件事做的好...
+#### 感觉离今年的目标还有很远，保持好的心态，慢慢前行  2020.05.27 

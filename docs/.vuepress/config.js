@@ -82,7 +82,8 @@ module.exports = {
           children: [
             '/javascript/',
             '/javascript/Hoisting.md',
-            '/javascript/Factory.md'
+            '/javascript/Factory.md',
+            '/javascript/constructor.md'
           ]
         }
       ],

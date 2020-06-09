@@ -50,7 +50,10 @@ module.exports = {
       },
       {
         text: 'react',
-        link: '/react/'
+        items: [
+          { text: 'react', link: '/react/combat/' },
+          { text: 'taro', link: '/react/taro/'}
+        ]
       },
       {
         text: 'Vue',
@@ -90,13 +93,20 @@ module.exports = {
       '/react/': [
         {
           title: 'react 基础与原理',
-          collapsable: false,
+          collapsable: true,
           children: [
-            '/react/',
-            '/react/axios.md',
-            '/react/hooks.md'
+            '/react/combat/',
+            '/react/combat/axios.md',
+            '/react/combat/hooks.md'
           ]
         },
+        {
+          title: 'taro',
+          collapsable: false,
+          children: [
+            '/react/taro/',
+          ]
+        }
       ],
       '/Vue/': [
         {

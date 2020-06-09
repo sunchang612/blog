@@ -2,9 +2,12 @@
 [![Build Status](https://travis-ci.org/sunchang612/blog.svg?branch=master)](https://travis-ci.org/sunchang612/blog)
 
 # react 
-  - [深入理解 setState 机制 (2020.4.07)](https://sunchang612.github.io/blog/react/)
-  - [学习 React Hooks](https://sunchang612.github.io/blog/react/hooks.html)
-  
+  - [深入理解 setState 机制 (2020.4.07)](https://sunchang612.github.io/blog/react/combat/)
+  - [学习 React Hooks](https://sunchang612.github.io/blog/react/combat/hooks.html)
+
+# taro
+  - [canvas 生成海报(2020.6.10)](https://sunchang612.github.io/blog/react/taro/)
+
 # JavaScript
   - [变量提升](https://sunchang612.github.io/blog/javascript/Hoisting.html)
   - [JavaScript 堆栈内存及内存释放](https://github.com/sunchang612/blog/issues/3)
@@ -50,7 +53,7 @@
 - [webpack 知识总结(2020.04.6)](https://sunchang612.github.io/blog/webpack/)
 
 # axios
-- [封装 axios (2020.04.27)](https://sunchang612.github.io/blog/react/axios.html)
+- [封装 axios (2020.04.27)](https://sunchang612.github.io/blog/react/combat/axios.html)
 
 # Vue
 

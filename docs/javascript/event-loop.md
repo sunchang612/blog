@@ -125,5 +125,14 @@ setTimeout(function() {
 9. 第三轮开始，执行宏任务 setTimeout2 ，它有两个微任务 将process.nextTick()分发到微任务Event Queue中。记为process3。将then分发到微任务Event Queue中，记为then3。
 10. 执行这两个微任务，结束。
 
+### 浏览器和Node事件循环的区别
+- 微任务和宏任务在Node的执行顺序
+- Node 10以前：
+执行完一个阶段的所有任务
+执行完nextTick队列里面的内容
+然后执行完微任务队列的内容
+- Node 11以后：
+<font color="red">Node和浏览器的行为统一了，都是每执行一个宏任务就执行完微任务队列。</font>
+
 - js的异步
-我们从最开头就说javascript是一门单线程语言，不管是什么新框架新语法糖实现的所谓异步，其实都是用同步的方法去模拟的，牢牢把握住单线程这点非常重要。
+我们从最开头就说javascript是一门单线程语言，不管是什么新框架新语法糖实现的所谓异步，<font color="red">其实都是用同步的方法去模拟的，牢牢把握住单线程这点非常重要。</font>

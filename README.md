@@ -11,6 +11,7 @@
 # JavaScript
   - [变量提升](https://sunchang612.github.io/blog/javascript/Hoisting.html)
   - [JavaScript 堆栈内存及内存释放](https://github.com/sunchang612/blog/issues/3)
+  - [JavaScript 事件循环 宏任务微任务](https://sunchang612.github.io/blog/javascript/event-loop.html)
 ## JavaScript 设计模式
   - [工厂模式](https://sunchang612.github.io/blog/javascript/Factory.html)
   - [构造函数模式](https://sunchang612.github.io/blog/javascript/constructor.html)
@@ -66,3 +67,6 @@
 #### 有一天学习学到搞个通宵  2020.05.07 凌晨
 #### 有人会陷入一种死循环，感觉每天很多工作很累很辛苦，但其实在别人看来没一件事做的好...
 #### 感觉离今年的目标还有很远，保持好的心态，慢慢前行  2020.05.27 
+#### 最近加班压力有些大，想找个时间给自己放个假 2020.06.30
+#### 新的一周加油，希望能有一个好的结果 2020.07.13
+#### 最近的事业不太顺利，可能是自己能力还不够，继续加油 2020.07.15

@@ -87,7 +87,8 @@ module.exports = {
             '/javascript/Hoisting.md',
             '/javascript/Factory.md',
             '/javascript/constructor.md',
-            '/javascript/event-loop.md'
+            '/javascript/event-loop.md',
+            '/javascript/async.md'
           ]
         }
       ],

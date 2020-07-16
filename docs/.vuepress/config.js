@@ -112,12 +112,19 @@ module.exports = {
       ],
       '/Vue/': [
         {
-          title: 'Vue',
+          title: 'Vue 实战',
           collapsable: false,
           children: [
             '/Vue/combat/',
           ]
         },
+        {
+          title: 'Vue 原理',
+          collapsable: false,
+          children: [
+            '/Vue/principle/',
+          ]
+        }
       ],
       '/webpack/': [
         {

@@ -42,7 +42,10 @@ module.exports = {
       {text: '首页', link: '/'},
       {
         text: 'JavaScript',
-        link: '/javascript/'
+        items: [
+          { text: 'JavaScript', link: '/javascript/basics/' },
+          { text: 'js 面试题', link: '/javascript/interview/' },
+        ]
       },
       {
         text: 'js 算法与数据结构',
@@ -80,15 +83,22 @@ module.exports = {
     sidebar: {
       '/javascript/': [
         {
-          title: '重新学习 JavaScript',
+          title: 'JavaScript 基础',
           collapsable: false,
           children: [
-            '/javascript/',
-            '/javascript/Hoisting.md',
-            '/javascript/Factory.md',
-            '/javascript/constructor.md',
-            '/javascript/event-loop.md',
-            '/javascript/async.md'
+            '/javascript/basics/',
+            '/javascript/basics/Hoisting.md',
+            '/javascript/basics/Factory.md',
+            '/javascript/basics/constructor.md',
+            '/javascript/basics/event-loop.md',
+            '/javascript/basics/async.md'
+          ]
+        },
+        {
+          title: 'JavaScript 面试题',
+          collapsable: false,
+          children: [
+            '/javascript/interview/',
           ]
         }
       ],

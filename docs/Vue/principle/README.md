@@ -16,7 +16,7 @@
 - 如果一个变量更新多次，例如：number ++ 从 0 到 100，只需要更新一个视图即可，就是 0 变成 100，<font color="red">在同一 watcher 在同一个 tick 的时候应该只被执行一次，也就是说队列中不应该出现重复的 watcher 对象。用id 来标记每个 watcher 对象。</font>
 
 ## SPA 单页面的理解，它的优缺点分别是什么 ？
-- sing-page application 仅在 web 页面初始化时加载响应的 HTML JavaScript 和 css。一旦页面加载完成，SPA 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 HTML 内部的变换，UI与用户的交互，避免页面的重新加载。
+- sing-page application 仅在 web 页面初始化时加载响应的 HTML JavaScript 和 css。一旦页面加载完成，<font color="red">SPA 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 HTML 内部的变换，UI与用户的交互，避免页面的重新加载。</font>
 
 ### 优点：
 1. 用户体验好，快，内容的改变不需要重新加载整个页面，避免了不必要的跳转和重复渲染；
@@ -27,3 +27,221 @@
 1. 初次加载消耗多，问了实现单页 web 应用功能及显示效果，需要在加载页面的时候将 JavaScript、CSS 同一加载，部分页面按需加载
 2. 前进后退路由管理： 由于单页面应用在一个页面上显示所有的内容，所以不能使用浏览器的前进后退功能，所有的页面切换需要自己建立堆栈管理。
 3. SEO 难度较大： 由于所有的内容都在一个页面中动态替换显示，所以在 SEO 上有着天然的劣势。
+
+## Vue 是如何对数组方法进行变异的？ push , pop splice 等
+- Vue2 中 用 <font color="red">Object.defineProperty 对数据进行拦截，而这个方法并不能监听数组内部变化，数组长度变化等，所以对数组进行 hack， 让Vue检测到内部的变化.</font>
+- <font color="#f28500">本质上就是从写了原型上的方法，在变异的方法中 加入了自定义的逻辑，最后也调用了真正的数组的方法。</font>
+> Object.defineProperty 的缺陷导致如果直接改变数组下标是无法 hack 的，因此，Vue 提供了 $set 的方式。新版的 Vue3 中使用了 proxy 的方式，可以支持监听数组，但也带来了兼容性的问题。
+
+## v-show 与 v-if 的区别？
+### v-if
+- 是真正的条件渲染，因为它会保证在切换过程中条件内的时间监听和子组件适当的被销毁重建；也是惰性的；如果在初始化条件渲染时为 false，则什么都不做，直到条件第一次为真时才会开始渲染条件块。
+
+### v-show
+- 不管什么条件，元素总是被渲染，并且用 CSS display 属性记性切换。
+
+> v-if 使用与在运行时很少改变条件，不需要频繁切换条件的场景； v-show 则适用于需要非常频繁切换条件的场景。
+
+## Class 与 Style 如何动态绑定？
+### Class
+- 可以通过对象语法和数组语法进行动态绑定
+  - 对象
+  ```js
+  <div :class="{ active: isActive}"></div>
+  data: {
+    isActive: true,
+  }
+  ```
+  - 数组
+  ```js
+  <div :class="[isActive ? activeClass : '', defaultClass]"></div>
+  data: {
+    activeClass: 'active',
+    defaultClass: 'text-default'
+  }
+
+  ```
+### Style
+- 也可以通过对象语法和数组语法进行动态绑定：
+  - 对象：
+  ```js
+  <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+  data: {
+    activeColor: 'blud',
+    fontSize: 26
+  }
+  ```
+  - 数组语法
+  ```js
+    <div :style="[styleColor, styleSize]"></div>
+
+    data: {
+      styleColor: {
+        color: 'blud'
+      },
+      styleSize:{
+        fontSize:'26px'
+      }
+    }
+  ```
+
+## 怎么理解 Vue 的单向数据流？
+
+- 所有的 props 都是通过父组件的 props 之间形成一个 <font color="red">单向下行绑定</font>：父 props 的更新会向下流动到子组件中，但反过来不行，这样是为了防止子组件意外改变父级组件的状态，从而导致数据流没办法理解。
+
+- <font color="red">父组件更新时，子组件中所有的 props 都将会刷新拿到最新的值，子组件不能改变父组件的 props，会抛出警告。</font> <font color="#f28500">子组件修改父组件，只能通过 $emit 派发一个自定义时间，父组件接收后，由父组件修改。</font>
+
+## 直接给数组某项赋值，Vue 能检测到变化吗？
+- 由于JavaScript 的显示，Vue 不能检测一下方式的数组变化：
+  - 当利用索引直接修改数组每一项的值时： list[index] = newValue
+  - 当你修改数组的长度时：list.length = newLength
+
+> 为了解决这个问题，<font color="red">Vue 提供了 $set 的方式修改，或者使用 Vue封装好的几种数组的方式，例如 splice，因为这是 Object.defineProperty 的缺点，Vue3中使用 proxy 解决了这个问题。</font>
+
+## 谈谈对 Vue 生命周期的理解 ？
+- 生命周期是什么 ？
+  - Vue 实例有一个完整的 生命周期，从<font color="red">开始创建、初始化数据、编译模板、挂载 DOM、渲染、更新、渲染、卸载等一系列过程，成为生命周期。</font>
+
+### 各个生命周期的作用
+1. beforeCreate   <font color="red"> 组件实例被创建之初，组件的属性生效之前</font>
+2. created         <font color="red">组件实例已经完全出创建，属性也绑定，但是真实 DOM 没有生成，$el 还不可以用</font>
+3. beforeMount     <font color="red">在挂载开始之前被调用，相关的render函数首次被调用</font>
+4. mounted         <font color="red">el 被新创建的 vm.$el 替换，并挂载实例上去调动该钩子</font>
+5. beforeUpdate    <font color="red">组件数据更新之前调用，发生在虚拟 DOM 打补丁之前</font>
+6. update          <font color="red">组件数据更新之后</font>
+7. activated       <font color="red">keep-alive 专属，组件被激活时调用</font>
+8. deactivated     <font color="red">keep-alive 专属，组件被销毁时调用</font>
+9. beforeDestory   <font color="red">组件销毁前调用</font>
+10. destroyed      <font color="red">组件销毁后调用</font>
+
+## Vue 的父组件和子组件生命周期钩子函数执行顺序
+### 加载渲染过程
+  - 生命周期 - <font color="#f28500">创建是从外到内的，渲染是从内到外的</font>
+  ```js
+    - 先创建 父组件的 created
+    - 在创建 子组件的 created
+    - 在渲染 子组件的 mounted
+    - 然后是 父组件的 mounted
+    - 父组件 before update
+    - 子组件 before update
+    - 子组件 updated
+    - 父组件 updated
+    - 父组件 beforeDestroy
+    - 子组件 beforeDestroy
+    - 子组件 destoryed
+    - 父组件 destoryed
+  ```
+
+## 在哪个生命周期内调用异步请求？
+- 在 钩子函数 created 、beforeMount、mounted 中进行调用，因为<font color="#f28500">在这三个钩子函数中，data 已经创建，可以将服务器点的数据返回进行赋值。</font>
+
+## 在什么阶段才能访问操作 DOM
+- 在钩子函数 mounted 被调用前，Vue 已经将编译好的模板挂载到页面上，所以可以在 mounted 中访问到 DOM。
+
+## 父组件监听到子组件的生命周期吗？
+- 有父组件 Parent 和子组件 Child，如果父组件监听到子组件挂载 mounted 就做一些逻辑处理，可以通过以下写法实现：
+```js
+// Parent.vue
+<Child @mounted="doSomething"/>
+    
+// Child.vue
+mounted() {
+  this.$emit("mounted");
+}
+```
+
+## 谈谈对 keep-alive 的了解
+- keep-alive 是 Vue 内置的一个组件，<font color="#f28500">可以使用包含的组件保留状态，避免重复渲染</font>
+  1. 一般结合路由和动态组件一起使用，用于缓存组件
+  2. 提供 include 和 exclude 属性，两者都支持字符串或正则表达式， include 表示只有名称匹配的组件会被缓存，exclude 表示任何名称匹配的组件都不会被缓存 ，其中 exclude 的优先级比 include 高；
+  3. 对应两个钩子函数 <font color="#f28500">activated</font> 和 <font color="#f28500">deactivated</font> ，当组件被激活时，触发钩子函数 activated，当组件被移除时，触发钩子函数 deactivated。
+
+## 组件中 data 为什么是一个函数
+- 为什么组件中的 data 必须是一个函数，然后 return 一个对象，而 new Vue 实例里，data 可以直接是一个对象？
+
+- <font color="#f28500">因为组件是用来复用的，且 JS 里对象是引用关系，如果组件中 data 是一个对象，那么这样作用域没有隔离，子组件中的 data 属性值会相互影响，</font>如果组件中 data 选项是一个函数，那么每个实例可以维护一份被返回对象的独立的拷贝，组件实例之间的 data 属性值不会互相影响；而 new Vue 的实例，是不会被复用的，因此不存在引用对象的问题。
+
+## v-model 的原理
+```js
+<input v-model='something'>
+相当于
+<input v-bind:value="something" v-on:input="something = $event.target.value">
+```
+```js
+<template>
+  <div>
+    <input type="text" :value="text" @input="$emit('change', $event.target.value)">
+  </div>
+</template>
+<script>
+export default {
+  model: {
+    prop: 'text',
+    event: 'change'
+  },
+  props: {
+    text: String
+  }
+}
+</script>
+```
+
+
+## Vue 组件间通信有哪几种方式 
+- 父子组件通信，隔代组件通信、兄弟组件通信
+
+#### props / $emit 父子组件通信
+
+#### ref 与 $parent / $children  父子组件通信
+  - ref： 如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就是组件实例
+  - $parent / $children 访问 父 / 子 实例
+
+#### $emit / $on  父子、隔代、兄弟组件通信
+
+#### $attrs / $listeners  隔代组件通信
+  - $attrs：包含了父作用域中不被 prop 所识别（且获取）的特性绑定 （class 和 style 除外）当一个组件没有申明任何 prop 时，这里会包含所有副作用的绑定 （class 和 style 除外），可以通过 $attrs 传入内部组件。通常配合 
+  - $listeners：包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on="$listeners" 传入内部组件
+
+#### provide / inject 适用于隔代组件通信
+  - 祖先组件中通过 provider 来提供变量，然后在子孙组件中通过 inject 来注入变量。 provide / inject API 主要解决了跨级组件间的通信问题，不过它的使用场景，主要是子组件获取上级组件的状态，跨级组件间建立了一种主动提供与依赖注入的关系。
+  - 我自己一般那它用来刷新当前页面。
+
+#### Vuex 适用于 父子、隔代、兄弟组件通信
+- Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。“store” 基本上就是一个容器，它包含着你的应用中大部分的状态 ( state )。
+  - Vuex 的状态存储是响应式的。当组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也就拿到最新的数据。
+  - 改变 store 中的状态唯一途径就是提交（commit）mutation。这能是我们方便跟踪每一个状态的变化。
+
+
+## 使你用过 Vuex 吗？
+- 主要包含一下几种模块：
+  #### State
+    - 定义了应用状态的数据结构，可以在这里设置默认的初始化状态。
+  #### Getter
+    - 允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性中。
+  #### Mutation
+    - 是唯一更改 store 中状态的方法，且必须是同步函数。
+  #### Action
+    - 用于提交 mutation，而不是直接变更状态，可以任何异步操作。
+  #### Module
+    - 允许将单一的 Store 拆分为多个 store 且同时保持在单一的状态数中。
+
+## 使用过 Vue SSR 吗？ 说说 SSR
+- SSR 将 Vue 在客户端将标签渲染成HTML 片段的工作放到了服务端完成，服务端形成的 HTML 片段直接返回给客户端这个过程，叫做服务端渲染。
+
+### 服务端渲染的有点：
+1. 更好的 SEO：因为 SPA 页面的内容是通过 Ajax 获取，而搜索引擎爬取并不会等待异步完成后再去抓取结果，所以在 SPA 中抓取不到页面 Ajax 的请求内容，而 SSR 是结果从服务端渲染，返回时已经渲染好的页面（数据也包含在内），所以搜索引擎爬取可以抓到渲染好的页面;
+
+2. 更快的内容到达时间（首屏加载更快）：SPA 等待所有 Vue 编译后的 js 文件都要下载完成后，才会进行页面的渲染，需要等待一段时间，SSR 直接由服务端渲染好页面直接返回显示，无需等待下载js 过程再去渲染，所以 SSR 更快。
+
+### 服务端渲染的缺点：
+1. 更多的开发条件限制： 只能在某些生命周期钩子函数 (lifecycle hook) 中使用；一些外部扩展库 (external library) 可能需要特殊处理，才能在服务器渲染应用程序中运行。
+2. 涉及构建设置和部署的更多要求。与可以部署在任何静态文件服务器上的完全静态单页面应用程序 (SPA) 不同，服务器渲染应用程序，需要处于 Node.js server 运行环境。
+3. 更多的服务器端负载。在 Node.js 中渲染完整的应用程序，显然会比仅仅提供静态文件的 server 更加大量占用 CPU 资源 (CPU-intensive - CPU 密集)，因此如果你预料在高流量环境 (high traffic) 下使用，请准备相应的服务器负载，并明智地采用缓存策略。
+
+## vue-router 路由模式有几种？
+- hash:  使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；
+
+- history :  依赖 HTML5 History API 和服务器配置。具体可以查看 HTML5 History 模式；
+
+- abstract :  支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.
+

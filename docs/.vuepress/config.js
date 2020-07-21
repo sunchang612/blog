@@ -99,6 +99,7 @@ module.exports = {
           collapsable: false,
           children: [
             '/javascript/interview/',
+            '/javascript/interview/real-code.md'
           ]
         }
       ],

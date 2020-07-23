@@ -1,5 +1,79 @@
 # Vue 面试题总结
 
+## 什么是 MVVM
+- MVVM - 数据驱动视图
+    - 不在操作 DOM，只需要改数据
+    - M -> <font color="red">model</font>   v -> <font color="red">view</font>  vm -> <font color="red">viewModel 连接层 </font>
+    - M -> 存JavaScript对象  V -> DOM  VM - vue
+  - 传统组件，只是静态渲染，更新还要依赖于操作 DOM
+
+### View 层
+- View 是视图层，也是用户界面。前端主要由HTML 和 CSS 构建
+> vue template 可以理解为 View
+```html
+<div id="app">
+  <p>{{message}}</p>
+  <button v-on:click="showMessage()">Click me</button>
+</div>
+```
+
+### Model 层
+- Model 是数据模型，泛指后端进行的各种业务逻辑处理和数据操控，对于前端来说就是后端提供的 api 接口。
+```js
+{
+  "url": "/server/data/api",
+  "res": {
+    "success": true,
+    "name": "baidu",
+    "domain": "www.baidu.com"
+  }
+}
+
+```
+
+### ViewModel 层
+- 是由前端人员组织生成和维护的视图数据层。
+```js
+var app = new Vue({
+  el: '#app',
+  data: {  // 用于描述视图状态   
+    message: 'Hello Vue!', 
+  },
+  
+  created(){
+    let vm = this;
+    // Ajax 获取 Model 层的数据
+    ajax({
+      url: '/server/data/api',
+      success(res){
+        vm.message = res;
+      }
+    });
+  }
+  methods: {  
+    showMessage(){
+      let vm = this;
+      alert(vm.message);
+    }
+  },
+})
+```
+
+## Vue 是如何实现数据双向绑定的
+- Vue 数据双向绑定主要是指：<font color="red">数据变化更新视图，视图变化更新数据</font>
+  - 输入框内容变化时，Data 中的数据同步变化。即 View => Data 的变化。
+  - Data 中的数据变化时，文本节点的内容同步变化。即 Data => View 的变化。
+- View 变化更新 Data，可以通过事件监听的方式实现，所以<font color="red"> Vue 的数据双向绑定的工作主要根据如果让 Data 变化更新 View。</font>
+
+### Vue 实现双向绑定的原理
+1. <font color="red">实现一个监听器 Observer：</font> <font color="#0000FF">对数据对象进行遍历，包括子属性对象属性，利用 Object.defineProperty 对属性都加上 setter 和 getter。这样之后，给这个对象某个属性赋值，就会触发它的 setter ，那么就能监听到数据变化。</font>
+
+2. <font color="red">实现一个解析器 Compile：</font> <font color="#0000FF">解析 Vue 模板指令，将模板中的变量都替换成数据，然后渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据发生变动，收到通知调用更新函数进行更新.</font>
+
+3. <font color="red">实现一个订阅者 Watcher：</font> <font color="#0000FF">Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁，主要任务是订阅 Observer 中的属性值变化的消息，当收到变化时，触发解析器 Compile 中对应的更新函数。</font>
+
+4. <font color="red">实现一个订阅器 Dep：</font> <font color="#0000FF">订阅器采用 发布-订阅 设计模式，用来收集订阅者 Watcher，对监听器 Observer 和 订阅者 Watcher 进行统一管理。</font>
+
 ## Vue 中的 computed 和 watch 的区别 ？
 - 功能上：<font color="red">computed 是计算属性，也就是依赖其它的属性计算后所得出的值。</font> <font color="#f28500">watch是去监听一个值的变化，然后执行相应的函数</font>
 - 使用上：<font color="red">computed 中的函数必须使用 return 返回；</font>，<font color="#f28500">watch 的回调里面传入监听属性的新旧值，通过这两个值可以做一些特定的操作，不是必须要return </font>
@@ -162,7 +236,7 @@ mounted() {
 - <font color="#f28500">因为组件是用来复用的，且 JS 里对象是引用关系，如果组件中 data 是一个对象，那么这样作用域没有隔离，子组件中的 data 属性值会相互影响，</font>如果组件中 data 选项是一个函数，那么每个实例可以维护一份被返回对象的独立的拷贝，组件实例之间的 data 属性值不会互相影响；而 new Vue 的实例，是不会被复用的，因此不存在引用对象的问题。
 
 ## v-model 的原理
-```js
+```html
 <input v-model='something'>
 相当于
 <input v-bind:value="something" v-on:input="something = $event.target.value">
@@ -245,3 +319,208 @@ export default {
 
 - abstract :  支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.
 
+## v-model 原理
+```html
+<input v-model='something'>
+相当于
+<input v-bind:value="something" v-on:input="something = $event.target.value">
+```
+```vue
+<template>
+  <div>
+    <input type="text" :value="text" @input="$emit('change', $event.target.value)">
+  </div>
+</template>
+<script>
+export default {
+  model: {
+    prop: 'text',
+    event: 'change'
+  },
+  props: {
+    text: String
+  }
+}
+</script>
+```
+
+## Vue 框架怎么实现对象和数组的监听
+- 可能都知道使用 Object.defineProperty() 对数据进行劫持，但它是怎么对整个对象进行劫持的，看它的源码
+```js
+  /**
+   * Observe a list of Array items.
+   */
+  observeArray (items: Array<any>) {
+    for (let i = 0, l = items.length; i < l; i++) {
+      observe(items[i])  // observe 功能为监测数据的变化
+    }
+  }
+
+  /**
+   * 对属性进行递归遍历
+   */
+  let childOb = !shallow && observe(val) // observe 功能为监测数据的变化
+```
+- <font color="red">它是利用遍历数组和递归遍历对象的方式，从而达到利用 Object.defineProperty() 对对象和部分数组的监听。</font>
+
+## Proxy 与 Object.defineProperty 优劣对比
+- Proxy 的优势如下:
+  1. Proxy <font color="red">可以直接监听对象而非属性；</font>
+  2. Proxy <font color="red">可以直接监听数组的变化；</font>
+  3. Proxy <font color="red">有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的；</font>
+  4. Proxy <font color="red">返回的是一个新对象,我们可以只操作新的对象达到目的,而 Object.defineProperty 只能遍历对象属性直接修改；</font>
+  5. Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利；
+
+- Object.defineProperty 的优势如下:
+  - 兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平。
+
+
+## Vue 怎么用 vm.$set() 解决对象新增属性不能影响的问题
+- 受现代 JavaScript 的限制 ，Vue 无法检测到对象属性的添加或删除。由于 Vue 会在初始化实例时对属性执行 getter/setter 转化，所以属性必须在 data 对象上存在才能让 Vue 将它转换为响应式的。但是 Vue 提供了 Vue.set (object, propertyName, value) / vm.$set (object, propertyName, value)  来实现为对象添加响应式属性，那框架本身是如何实现的呢？
+
+- 查看对应的 Vue 源码：vue/src/core/instance/index.js
+```js
+export function set (target: Array<any> | Object, key: any, val: any): any {
+  // target 为数组  
+  if (Array.isArray(target) && isValidArrayIndex(key)) {
+    // 修改数组的长度, 避免索引>数组长度导致splcie()执行有误
+    target.length = Math.max(target.length, key)
+    // 利用数组的splice变异方法触发响应式  
+    target.splice(key, 1, val)
+    return val
+  }
+  // key 已经存在，直接修改属性值  
+  if (key in target && !(key in Object.prototype)) {
+    target[key] = val
+    return val
+  }
+  const ob = (target: any).__ob__
+  // target 本身就不是响应式数据, 直接赋值
+  if (!ob) {
+    target[key] = val
+    return val
+  }
+  // 对属性进行响应式处理
+  defineReactive(ob.value, key, val)
+  ob.dep.notify()
+  return val
+}
+```
+- 根据源码可知，vm.$set 的实现原理是：
+  - <font color="red">如果目标是数组，直接使用数组的 splice 方法触发响应式.</font>
+  - <font color="#0000FF">如果目标是对象，会先判断属性是否存在，对象是否是响应式，如果要对属性进行响应式处理，则是通过调用 defineReactive 方法进行响应式处理（ defineReactive 方法就是 Vue 在初始化对象时，给对象属性采用 Object.defineProperty 动态添加 getter 和 setter 的功能所调用的方法）。</font>
+
+## 虚拟 DOM 的优缺点
+#### 优点：
+1. <font color="red">保证性能下限：</font>框架的虚拟 DOM 需要适配任何上层 API 可能产生的操作，它的一些 DOM 操作的实现必须是普适的，所以它的性能并不是最优的；但相比起直接操作 DOM 性能要好很多，因为框架的虚拟 DOM 至少可以保证你不需要手动优化的情况下，依然可以提供不错的性能，保证性能下限；
+
+2.  <font color="red">无需手动操作 DOM：</font>只要写好 View-Model 的代码逻辑，框架会根据虚拟 DOM 和数据双向绑定，帮我们可预期的方式更新视图，提高开发效率。
+
+3.  <font color="red">跨平台：</font>虚拟 DOM 本质上是 JavaScript 对象，而 DOM 与平台强相关，相比之下虚拟 DOM 可以进行更方便跨平台操作，例如服务器渲染
+
+#### 缺点：
+  - <font color="red">无法进行极致优化：</font> 虽然虚拟 DOM + 合理的优化，足以应对绝大部分应用的性能需求，但是一些性能要求极高的应用中虚拟 DOM 无法进行针对性的机制优化。
+
+## 虚拟 DOM 实现原理?
+1. 用 JavaScript 对象模拟真实 DOM 数, 对真实 DOM 进行抽象;
+2. diff 算法 比较两颗虚拟 DOM 数的差异；
+3. pach 算法 将虚拟 DOM对象的差异应用到真正的 DOM 数。
+
+## Vue 中的 key 有什么作用？
+- 作用是：<font color="red">key 是为 VUe 中 vnode 的唯一标记，通过这个 key，使 diff 操作可以更准确，更快速。</font>
+
+- 更准确：<font color="red">因为带 key 就不是 就地复用了，在 sameNode 函数 a.key === b.key 对比中可以避免就地复用的情况，所以会更准确。</font>
+- 更快速：<font color="red">利用 key 的唯一性生成 map 对象来获取对应节点，比遍历方式更快。</font>
+```js
+function createKeyToOldIdx (children, beginIdx, endIdx) {
+  let i, key
+  const map = {}
+  for (i = beginIdx; i <= endIdx; ++i) {
+    key = children[i].key
+    if (isDef(key)) map[key] = i
+  }
+  return map
+}
+```
+
+## 双向绑定和 Vuex 是否冲突
+- 在严格模式下，直接使用是会有冲突。
+
+#### 怎么开启严格模式
+- 开启严格模式，仅需在创建 store 的时候传入 strict：true
+```js
+const store = new Vuex.Store({
+  // ...
+  strict: true
+})
+```
+- <font color="red">在严格模式下，无论何时发生了状态变更且不是右 mutation 函数引起的，将会抛出错误。这能保证所有的状态变更都能被调试工具跟踪到。</font>
+
+> 不要在发布环境下启用严格模式！严格模式会深度监测状态树来检测不合规的状态变更——请确保在发布环境下关闭严格模式，以避免性能损失。
+
+#### 严格模式同时使用 v-model 和 Vuex
+```js
+<input v-model="obj.message">
+computed: {
+  message: {
+    set (value) {
+        this.$store.dispatch('updateMessage', value);
+    },
+    get () {
+        return this.$store.state.obj.message
+    }
+  }
+}
+mutations: {
+  UPDATE_MESSAGE (state, v) {
+    state.obj.message = v;
+  }
+}
+actions: {
+  update_message ({ commit }, v) {
+    commit('UPDATE_MESSAGE', v);
+  }
+}
+```
+- 这里的 obj 是在计算属性中返回的一个属于 Vuex store 的对象，在用户输入时，v-model 会视图直接修改 obj.message。 而严格模式中，由于修改不在 mutation 函数中执行的，会抛出一个错误。
+
+#### 使用 Vuex 解决这个问题
+- 给 `<input>`中绑定 value，然后侦听 input 或者 change 事件，在事件回调中调用一个方法:
+```html
+<input :value="message" @input="updateMessage">
+```
+```js
+computed: {
+  ...mapState({
+    message: state => state.obj.message
+  })
+},
+methods: {
+  updateMessage (e) {
+    this.$store.commit('updateMessage', e.target.value)
+  }
+}
+mutations: {
+  updateMessage (state, message) {
+    state.obj.message = message
+  }
+}
+```
+
+#### 使用双向绑定解决这个问题
+```html
+<input v-model="message">
+```
+```js
+computed: {
+  message: {
+    get () {
+      return this.$store.state.obj.message
+    },
+    set (value) {
+      this.$store.commit('updateMessage', value)
+    }
+  }
+}
+
+```

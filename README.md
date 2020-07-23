@@ -66,6 +66,9 @@
 ### Vue 项目实战
 - [vue-awesome-swiper 自定义分页器 (2020.05.06)](https://sunchang612.github.io/blog/Vue/combat/)
 
+### Vue 面试题总结
+- [Vue 2.x](https://sunchang612.github.io/blog/Vue/principle/)
+
 # Chrome 
 - [DevTools 不常用的小技巧](https://github.com/sunchang612/blog/issues/2)
 # 半夜的碎语

@@ -35,7 +35,7 @@ module.exports = {
   themeConfig: {
     smoothScroll: true
   },
-  repo: 'https://sunchang1996.github.io/blog',
+  repo: 'https://github.com/sunchang612',
   repoLabel: 'Github',
   themeConfig: {
     nav: [

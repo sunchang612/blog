@@ -91,7 +91,8 @@ module.exports = {
             '/javascript/basics/Factory.md',
             '/javascript/basics/constructor.md',
             '/javascript/basics/event-loop.md',
-            '/javascript/basics/async.md'
+            '/javascript/basics/async.md',
+            '/javascript/basics/promise.md',
           ]
         },
         {

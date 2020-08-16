@@ -319,6 +319,28 @@ export default {
 
 - abstract :  支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.
 
+## vue-router 中常用的 hash 和 history 路由模式的实现原理？
+
+### hash 模式的实现原理
+- 早期的前端路由基于 location.hash 实现的。
+- hash 路由模式的实现主要基于下面几种特性：
+  1. URL 中 hash 值只是客户端的一种状态，也就是说当向服务器端发出请求时，hash 部分不会被发送；
+  2. hash 值的改变，都会在浏览器的访问历史中增加一个记录。因此我们能通过浏览器的回退、前进按钮控制hash 的切换；
+  3. 可以通过 a 标签，并设置 href 属性，当用户点击这个标签后，URL 的 hash 值会发生改变；或者使用  JavaScript 来对 loaction.hash 进行赋值，改变 URL 的 hash 值；
+  4. 我们可以使用 hashchange 事件来监听 hash 值的变化，从而对页面进行跳转（渲染）。
+
+### history 模式的实现原理
+- HTML5 提供了 History API 来实现 URL 的变化。其中做最主要的 API 有以下两个：history.pushState() 和 history.repalceState()。这两个 API 可以在不进行刷新的情况下，操作浏览器的历史纪录。唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录，如下所示：
+```
+window.history.pushState(null, null, path);
+window.history.replaceState(null, null, path);
+```
+- history 路由模式的实现主要基于存在下面几种特性：
+1. pushState 和 repalceState 两个 API 来操作实现 URL 的变化 ；
+2. 我们可以使用 popstate 事件来监听 url 的变化，从而对页面进行跳转（渲染）；
+3. history.pushState() 或 history.replaceState() 不会触发 popstate 事件，这时我们需要手动触发页面跳转（渲染）。
+
+
 ## v-model 原理
 ```html
 <input v-model='something'>
@@ -486,6 +508,122 @@ actions: {
 
 #### 使用 Vuex 解决这个问题
 - 给 `<input>`中绑定 value，然后侦听 input 或者 change 事件，在事件回调中调用一个方法:
+```html
+<input :value="message" @input="updateMessage">
+```
+```js
+computed: {
+  ...mapState({
+    message: state => state.obj.message
+  })
+},
+methods: {
+  updateMessage (e) {
+    this.$store.commit('updateMessage', e.target.value)
+  }
+}
+mutations: {
+  updateMessage (state, message) {
+    state.obj.message = message
+  }
+}
+```
+
+#### 使用双向绑定解决这个问题
+```html
+<input v-model="message">
+```
+```js
+computed: {
+  message: {
+    get () {
+      return this.$store.state.obj.message
+    },
+    set (value) {
+      this.$store.commit('updateMessage', value)
+    }
+  }
+}
+
+```
+
+## 在 Vue 中，子组件为何不可以修改父组件的 Prop，如果修改了，Vue 如何监听到修改的并给出警告的
+
+#### 子组件为何不可以修改父组件传递的prop
+  - 因为为 Vue 是单向数据流，易于监测数据的流动，出现了错误可以更加迅速的定位到错误发生的位置。
+
+#### 如果修改了，Vue 是如何监控到属性的修改并给出警告的
+```js
+if (process.env.NODE_ENV !== 'production') {
+  var hyphenatedKey = hyphenate(key);
+  if (isReservedAttribute(hyphenatedKey) ||
+      config.isReservedAttr(hyphenatedKey)) {
+    warn(
+      ("\"" + hyphenatedKey + "\" is a reserved attribute and cannot be used as component prop."),
+      vm
+    );
+  }
+  defineReactive$$1(props, key, value, function () {
+    if (!isRoot && !isUpdatingChildComponent) {
+      warn(
+        "Avoid mutating a prop directly since the value will be " +
+        "overwritten whenever the parent component re-renders. " +
+        "Instead, use a data or computed property based on the prop's " +
+        "value. Prop being mutated: \"" + key + "\"",
+        vm
+      );
+    }
+  });
+}
+```
+
+- 在 initProps 的时候，在 defineReactive 时通过判断环境是否在开发环境，如果在开发环境，会在触发 set 的时候判断是否此 key 是否处于 updatingChildren 被修改，如果不是，说明此修改来自子组件，触发 warning 提示。
+
+> 需要注意的是，当从子组件修改的 Prop 属于基础类型时会触发提示。这种情况下，是无法修改父组件的数据源的，因为基础类型赋值时是值拷贝。直接将另一个非基础类型（object，array）赋值到此 key 时也会触发提示（但实际上不会影响父组件的数据源），当修改 Object 的属性时不会触发提示，并且会修改父组件数据源的数据。
+
+## 双向绑定和 Vuex 是否冲突
+- 在严格模式下，直接使用是会有冲突。
+
+#### 怎么开启严格模式
+- 开启严格模式，仅需在创建 store 的时候传入 strict：true
+```js
+const store = new Vuex.Store({
+  // ...
+  strict: true
+})
+```
+- 在严格模式下，无论何时发生了状态变更且不是右 mutation 函数引起的，将会抛出错误。这能保证所有的状态变更都能被调试工具跟踪到。
+
+>不要在发布环境下启用严格模式！严格模式会深度监测状态树来检测不合规的状态变更——请确保在发布环境下关闭严格模式，以避免性能损失。
+
+#### 严格模式同时使用 v-model 和 Vuex
+```js
+<input v-model="obj.message">
+computed: {
+  message: {
+    set (value) {
+      this.$store.dispatch('updateMessage', value);
+    },
+    get () {
+      return this.$store.state.obj.message
+    }
+  }
+}
+mutations: {
+  UPDATE_MESSAGE (state, v) {
+    state.obj.message = v;
+  }
+}
+actions: {
+  update_message ({ commit }, v) {
+    commit('UPDATE_MESSAGE', v);
+  }
+}
+```
+- 这里的 obj 是在计算属性中返回的一个属于 Vuex store 的对象，在用户输入时，v-model 会视图直接修改 obj.message。 而严格模式中，由于修改不在 mutation 函数中执行的，会抛出一个错误。
+
+#### 使用 Vuex 解决这个问题
+- 给 <input> 中绑定 value，然后侦听 input 或者 change 事件，在事件回调中调用一个方法:
 ```html
 <input :value="message" @input="updateMessage">
 ```

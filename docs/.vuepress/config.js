@@ -119,6 +119,9 @@ module.exports = {
           collapsable: false,
           children: [
             '/react/taro/',
+            '/react/taro/install',
+            '/react/taro/qrcode',
+            '/react/taro/params-code',
           ]
         }
       ],

@@ -1,6 +1,6 @@
 module.exports = {
   title: '阿畅的博客',
-  description: 'JavaScript，前端，Vue，react，webpack，HTML，CSS等技术分享',
+  description: 'JavaScript，Vue，React，Webpack，HTML，CSS等技术分享',
   // theme: 'awesome',
   head: [
     ['script', {}, `
@@ -74,6 +74,10 @@ module.exports = {
         items: [
           { text: 'sequelize', link: '/node/sequelize/' }
         ]
+      },
+      {   
+        text: 'CSS',
+        link: '/CSS/'
       },
       {
         text: 'GitHub',
@@ -189,6 +193,15 @@ module.exports = {
           collapsable: false,
           children: [
             '/node/sequelize/'
+          ]
+        }
+      ],
+      '/CSS/': [
+        {
+          title: '学习 CSS',
+          collapsable: false,
+          children: [
+            '/CSS/'
           ]
         }
       ]

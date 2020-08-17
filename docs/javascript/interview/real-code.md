@@ -587,3 +587,75 @@ b = {
   }
 }
 ```
+
+## a.b.c.d 和 a['b']['c']['d']，哪个性能更高？
+- a.b.c.d 比 a['b']['c']['d'] 性能高点，因为[ ]里面有可能是字符串，有可能是变量，至少多一次判断，而a.b.c.d是直接取用该字符串当作属性名的，但实际结果两者性能差距不大，非常小基本上可以忽略不计。
+
+## 写出如下代码的打印结果 （考察new和参数相关知识）
+```js
+function changeObjProperty(o) {
+  o.siteUrl = "http://www.baidu.com"
+  o = new Object()
+  o.siteUrl = "http://www.google.com"
+} 
+let webSite = new Object();
+changeObjProperty(webSite);
+console.log(webSite.siteUrl);
+```
+- 答案是 "http://www.baidu.com"
+#### 解释
+- 对象作为参数，传递给函数的是这个对象的引用地址， o.siteUrl 是个这个对象赋值， o = new Object; 是把 o 指向另一个对象，o.siteUrl 是给这个新的对象赋值，不影响 webSite 这个变量指向的那个地址，因为两个o 指向的对象的引用地址是不同的。
+
+## 请写出如下代码的打印结果 (考察原型及函数执行)
+```js
+function Foo() {
+  Foo.a = function() {
+    console.log(1)
+  }
+  this.a = function() {
+    console.log(2)
+  }
+}
+Foo.prototype.a = function() {
+  console.log(3)
+}
+Foo.a = function() {
+  console.log(4)
+}
+Foo.a();
+let obj = new Foo();
+obj.a();
+Foo.a();
+```
+- 执行结果 4，2，1
+#### 解释
+```js
+// Foo 方法定义，没有产生实例，所以并没有执行
+function Foo() {
+  Foo.a = function() {
+    console.log(1)
+  }
+  this.a = function() {
+    console.log(2)
+  }
+}
+
+// 在 Foo 原型上挂载了 a 方法，输出 3
+Foo.prototype.a = function() {
+  console.log(3)
+}
+
+// 在 Foo 方法上直接挂载了 a ，输出 4
+Foo.a = function() {
+  console.log(4)
+}
+
+// 立即执行了 Foo 上 a 方法，也就是上一步刚定义的 所以，输出 4
+Foo.a();
+// 创建 Foo 的实例 obj 
+let obj = new Foo();
+// 直接调用 obj.a 的方法，这里调用的是私有方法，如果私有没有才会调用  property 上的方法，所以输出 2
+obj.a();
+// 这时在调用 Foo.a 上面创建实例时，已经替换了全局 Foo 上的 a 方法，所以输出 1
+Foo.a();
+```

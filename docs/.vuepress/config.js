@@ -139,9 +139,11 @@ module.exports = {
         },
         {
           title: 'Vue 原理',
-          collapsable: false,
+          collapsable: true,
           children: [
             '/Vue/principle/',
+            '/Vue/principle/defineproperty',
+            '/Vue/principle/proxy',
           ]
         }
       ],

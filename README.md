@@ -62,6 +62,8 @@
 - [封装 axios (2020.04.27)](https://sunchang612.github.io/blog/react/combat/axios.html)
 
 # Vue
+- [Vue 发布订阅模式(2020.09.15)](https://sunchang612.github.io/blog/Vue/principle/subscribe.html)
+- [Vue 观察者模式(2020.09.15)](https://sunchang612.github.io/blog/Vue/principle/observer.html)
 
 ### Vue 项目实战
 - [vue-awesome-swiper 自定义分页器 (2020.05.06)](https://sunchang612.github.io/blog/Vue/combat/)

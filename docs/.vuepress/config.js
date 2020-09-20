@@ -146,6 +146,7 @@ module.exports = {
             '/Vue/principle/proxy',
             '/Vue/principle/observer',
             '/Vue/principle/subscribe',
+            '/Vue/principle/responsive',
           ]
         }
       ],

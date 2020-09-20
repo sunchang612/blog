@@ -64,6 +64,7 @@
 # Vue
 - [Vue 发布订阅模式(2020.09.15)](https://sunchang612.github.io/blog/Vue/principle/subscribe.html)
 - [Vue 观察者模式(2020.09.15)](https://sunchang612.github.io/blog/Vue/principle/observer.html)
+- [手写 Vue 响应式框架(2020.09.20)](https://sunchang612.github.io/blog/Vue/principle/responsive.html)
 
 ### Vue 项目实战
 - [vue-awesome-swiper 自定义分页器 (2020.05.06)](https://sunchang612.github.io/blog/Vue/combat/)

@@ -69,6 +69,10 @@ module.exports = {
         text: 'webpack',
         link: '/webpack/'
       },
+      {
+        text: 'TypeScript',
+        link: '/typescript/'
+      },
       {   
         text: 'nodejs',
         items: [
@@ -156,6 +160,14 @@ module.exports = {
           collapsable: false,
           children: [
             '/webpack/', 
+          ]
+        }
+      ],
+      '/typescript/': [
+        {
+          title: 'TypeScript',
+          children: [
+            '/typescript/'
           ]
         }
       ],

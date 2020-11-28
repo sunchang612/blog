@@ -143,14 +143,21 @@ module.exports = {
         },
         {
           title: 'Vue 原理',
-          collapsable: true,
+          collapsable: false,
           children: [
             '/Vue/principle/',
-            '/Vue/principle/defineproperty',
+            '/Vue/principle/defineproperty', 
             '/Vue/principle/proxy',
             '/Vue/principle/observer',
             '/Vue/principle/subscribe',
-            '/Vue/principle/responsive',
+            '/Vue/principle/vnode',
+          ]
+        },
+        {
+          title: 'Vue 面试题',
+          collapsable: true,
+          children: [
+            '/Vue/question/'
           ]
         }
       ],

@@ -1,15 +1,15 @@
 # webpack 基础学习
-
-### 为什么选择 webpack
+- 适合刚学 webpack 的小白看
+## 为什么选择 webpack
 - 社区生态丰富
 - 配置灵活和插件化扩展
 - 官方更新迭代速度快
 
-### 配置文件名称
+## 配置文件名称
 - webpack 默认配置文件 webpack.config.js
 - 也可以通过 webpack --config 执行配置文件
 
-### webpack 配置组成
+## webpack 配置组成
 ```js
 module.exports = {
   entry:   ----> 打包文件的入口
@@ -28,10 +28,10 @@ module.exports = {
 }
 ```
 
-### 使用 webpack 打包文件
+## 使用 webpack 打包文件
 - 使用 webpack 小案例
 
-#### 准备文件及安装webapck
+### 准备文件及安装webapck
 1. 打开终端 常见文件 及 初始化项目 （注意要先安装 node）
 ```s
 mkdir  my-webpack
@@ -73,7 +73,7 @@ module.exports = {
 ```
 - 执行 npm run build 一样可以打包
 
-### entry 和 output
+## entry 和 output
 #### 单入口
 ```js
 entry: './src/index.js',
@@ -94,7 +94,7 @@ output: {
 },
 ```
 
-### Loaders
+## Loaders
 - 本身就是一个函数，接收源文件作为参数，返回转换的结果
 #### 常用的 Loaders
 - babel-loader
@@ -113,7 +113,7 @@ output: {
 - HtmlWebpackPlugin     创建 HTML 文件去承载输出的 bundle
 - UglifyjsWebpackPlugin 压缩JS
 
-### Mode
+## Mode
 - 用来指定当前的构建环境是 production development 还是 none
 - 设置 mode 可以使用 webpack 内置函数，默认值是 production
 ```js
@@ -135,7 +135,7 @@ webpack --mode=development
 - node 
 > 不使用任何默认优化选项
 
-### 使用 babel 解析 ES6
+## 使用 babel 解析 ES6
 - 安装 babel 解析文件
 ```js
 npm i @babel/core @babel/preset-env babel-loader -D
@@ -160,7 +160,7 @@ module: {
 }
 ```
 
-### 解析 CSS 文件
+## 解析 CSS 文件
 - 安装 style-loader 和 css-loader
 - 修改 webpack.config.js 文件
 ```
@@ -182,7 +182,7 @@ module: {
 ``` 
 > loader 的执行顺序是 从又右到左的
 
-#### url-loader  解析图片
+### url-loader  解析图片
 - 安装 url-loader 和 file-loader
 ```js
 module: {
@@ -213,7 +213,7 @@ module: {
 }
 ```
 
-### webpack 文件监听
+## webpack 文件监听
 1. 启动 webpack 命令时，带上 --watch 参数
 	- 缺点是： 每次需要手动刷新浏览器
 2. 在配置 webpack.config.js 中设置 watch: true
@@ -320,11 +320,11 @@ module.exports = {
 	- [hash] : 文件内容的 hash 默认 MD5 生成
 	- [emoji] : 一个随机的指定文件内容的 emoji
 
-### 代码压缩
-#### JS 文件的压缩
+## 代码压缩
+### JS 文件的压缩
 - uglifyjs-webpack-plugin  webpack4.0 后内置了
 
-#### css 压缩
+### css 压缩
 - 安装
 	- npm i optimize-css-assets-webpack-plugin -D
 	- npm i cssnano -D
@@ -336,7 +336,7 @@ new OpeimizeCssAssetsPlugin({
 }),
 ```
 
-#### html 压缩
+### html 压缩
 - 安装
 ```js
 npm i html-webpack-plugin -D

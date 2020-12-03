@@ -164,10 +164,11 @@ module.exports = {
       '/webpack/': [
         {
           title: '学习 webpack',
-          collapsable: false,
+          collapsable: true,
           children: [
-            '/webpack/', 
-            '/webpack/basics.md'
+            '/webpack/',
+            '/webpack/basics',
+            '/webpack/advance'
           ]
         }
       ],

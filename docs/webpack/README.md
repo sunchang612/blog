@@ -1,9 +1,9 @@
 # webpack 知识概括
 
-### 基本使用
+## 基本使用
 - 现在流行的框架 Vue ，react 都已经 webpack 基础配置都做好了，我们基本上不需要配置任何东西，当一些常用的配置还是要懂得。
 
-### 几个核心的概念
+## 几个核心的概念
 #### entry
 - 可以在 webpack 中配置 entry，用来指定一个入口起点（或者多个入口），默认是 ./src
 
@@ -51,7 +51,7 @@ const config = {
 
 ```注意 如果一个文件同时使用多个 loader 时，loader 执行顺序是，从后往前```
 
-### 插件
+## 插件
 - plugins 和 loader 的区别
 - loader 是被用于转换某些类型的模块，而插件是可以用于执行范围更广的任务，可以从打包优化到压缩，一直到重新定义环境中的变量。
 
@@ -82,7 +82,7 @@ module.exports = config;
   - MinChunkSizePlugin 设置 chunk 的大小不超过指定限制
 
 
-### 如何配置多文件打包
+## 如何配置多文件打包
 #### Vue 版
 - vue.config.js
 ```js
@@ -125,7 +125,7 @@ entry: {
   plugins: [new HtmlWebpackPlugin()]  
 ```
 
-### 抽离 css 文件
+## 抽离 css 文件
 - 安装 npm install --save-dev mini-css-extract-plugin
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -158,7 +158,7 @@ module: {
 
 ```
 
-### 压缩 js 和 css  文件
+## 压缩 js 和 css  文件
 - npm install terser-webpack-plugin --save-dev
 - npm install optimize-css-assets-webpack-plugin --save-dev
 ``` js
@@ -173,7 +173,7 @@ module.exports = {
 };
 ```
 
-###  抽离公众代码
+##  抽离公众代码
 - splitChunks
 ```js
   optimization: {
@@ -213,7 +213,7 @@ module.exports = {
   }  
 ```
 
-### module chunk bundle 的区别
+## module chunk bundle 的区别
 - module  是不同的源码文件，webpack 中一切皆模块（源码）
 
 - chunk 这是 webpack 特定的术语被用在内部来管理 building 过程, 多模块合并后的文件， 如 entry，import splitChunk。
@@ -225,8 +225,8 @@ output:{
 }
 ```
 
-### 优化打包构建速度
-#### 优化 babel-loader 加入缓存
+## 优化打包构建速度
+### 优化 babel-loader 加入缓存
   - cacheDirectory
 ```js
   rules: [
@@ -239,7 +239,7 @@ output:{
 ```
   - cacheDirectory 默认值是 false，当设置为 true 时，webpack 构建会将尝试读取缓存，来避免每次执行时，可能产生的，高性能消耗的babel，如果设置了空值 ```(loader: 'babel-loader?cacheDirectory') 或者 true (loader: 'babel-loader?cacheDirectory=true')```， loader 将使用默认的缓存目录 ```node_modules/.cache/babel-loader```，如果在任何根目录下都没有找到 ``` node_modules ``` 目录，将会降级回退到操作系统默认的临时文件目录。
 
-#### IgnorePlugin 
+### IgnorePlugin 
 - 避免引入无用模块
 
 ```js
@@ -258,7 +258,7 @@ new webpack.IgnorePlugin({
 ```
   - 表示 ./locale 在任何 moment 结尾的目录中都将被忽略。
 
-#### noParse 
+### noParse 
 - 避免重复打包
 ```js
   module: {
@@ -268,11 +268,11 @@ new webpack.IgnorePlugin({
   }
 ```
 
-#### IgnorePlugin 和 noParse 的区别
+### IgnorePlugin 和 noParse 的区别
 - IgnorePlugin 直接不引入，代码中没有
 - noParse 引入，但不打包
 
-#### happyPack
+### happyPack
 - 开启多进程打包
 - npm install --save-dev happypack
 ```js
@@ -295,7 +295,7 @@ new webpack.IgnorePlugin({
   ]
 ```
 
-#### ParallelUglifyPlugin
+### ParallelUglifyPlugin
 - 开启多进程的压缩
   - 使用 webpack 内置 Uglify 工具压缩 JS
   ```js
@@ -324,12 +324,12 @@ new webpack.IgnorePlugin({
     ]
   ```
 
-#### 关于开启多进程打包
+## 关于开启多进程打包
 1. 项目较大，打包较慢，开始多进程打包能提高速度
 2. 项目较小，打包很快，开始多进程打包会降低速度（因为有进程开销）
 - 所有是否开启多进程要 ```按需使用```
 
-#### 自动刷新 （不能用于生产环境）
+## 自动刷新 （不能用于生产环境）
 ```js
   watch: true, // 开启监听，默认为 false
   // 注意，开启监听之后，webpack-dev-server 会自动开启刷新浏览器
@@ -343,7 +343,7 @@ new webpack.IgnorePlugin({
     poll: 1000
   }
 ```
-####  热更新 （不能用于生产环境）
+##  热更新 （不能用于生产环境）
 - 自动刷新
   - 整个网页都会刷新， 速度较慢，state 也会丢失
 - 热更新的好处
@@ -374,7 +374,7 @@ new webpack.IgnorePlugin({
   }
 ```
 
-#### DLLPlugin 和 DLLReferencePlugin
+## DLLPlugin 和 DLLReferencePlugin
 - DLLPlugin 和 DLLReferencePlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。
 - 使用：把一些较稳定，不常升级版本的 例如 react， Vue，使用 DLLPlugin 打包，同一个版本只构建一个即可，不用每次都重新构建。
 
@@ -421,7 +421,7 @@ new webpack.IgnorePlugin({
 ```js
 <script src="miam.dll.js"></script>
 ```
-#### DllReferencePlugin 使用
+## DllReferencePlugin 使用
 - 这个插件是在 webpack 主配置文件中设置的， 这个插件把只有 dll 的 bundle(们)(dll-only-bundle(s)) 引用到需要的预编译的依赖。
 ```js
 // 告诉 webpack 使用哪些动态链接库
@@ -432,7 +432,7 @@ new DllReferencePlugin({
 ```
 - 不需要改变源代码的配置
 
-### 优化产出代码
+## 优化产出代码
 - 小图片使用 base64 编码
 - bundle 加 hash
 - 路由懒加载
@@ -442,22 +442,22 @@ new DllReferencePlugin({
 - 使用 production
 - 开启 Scope Hosting
 
-#### 使用 production 的好处
+## 使用 production 的好处
   - 默认会开启代码压缩
   - Vue react 等会自动删除掉调试代码 
   - 自动启动 tree-shaking
   
-#### tree-shaking
+## tree-shaking
 - 删除没用的代码（没有引用的）
 - 必须使用 ES6Module 才能让 tree-shaking 生效 common.js 不行
 
-#### ES6 Module 和 Common.js 的区别
+## ES6 Module 和 Common.js 的区别
 - ES6 Module 静态引入（不允许动态），编译时引入（意思是静态的引用，没有加条件判断的，可以清楚的知道引入的是什么模块）
 - Commonjs 动态引入，执行引入（支持动态引入，可以有条件判断来改变引入的模块）
 
 ```所以只有 ES6 Module 才能静态分析，实现 tree-shaking```
 
-#### Scope Hosting (ModuleConcatenationPlugin)
+## Scope Hosting (ModuleConcatenationPlugin)
 ```此插件仅适用于由webpack直接处理的 ES6 模块```
 - 针对 NPM 中的第三方模块优先采用 jsnext:main 中指向的 ES6模块化语法的文件
 ```js
@@ -476,7 +476,7 @@ plugins: [
   2. 创建函数作用域更少
   3. 代码可读性更好
 
-### 介绍下 webpack 热更新原理，是如何做到在不刷新浏览器的前提下更新页面
+## 介绍下 webpack 热更新原理，是如何做到在不刷新浏览器的前提下更新页面
 
 首先，介绍webpack-dev-server:
 webpack-dev-server 主要包含了三个部分：

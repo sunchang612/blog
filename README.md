@@ -62,6 +62,7 @@
 - [webpack 基础篇(2020.11.30)](https://sunchang612.github.io/blog/webpack/basics.html)
 - [webpack 进阶篇(2020.12.3)](https://sunchang612.github.io/blog/webpack/advance.html)
 - [webpack 动态js(2020.12.5)](https://sunchang612.github.io/blog/webpack/dynamic-import.html)
+- [webpack 打包组件和基础库(2020.12.5)](https://sunchang612.github.io/blog/webpack/component.html)
 
 # axios
 - [封装 axios (2020.04.27)](https://sunchang612.github.io/blog/react/combat/axios.html)

@@ -169,7 +169,8 @@ module.exports = {
             '/webpack/',
             '/webpack/basics',
             '/webpack/advance',
-            '/webpack/dynamic-import'
+            '/webpack/dynamic-import',
+            '/webpack/component',
           ]
         }
       ],

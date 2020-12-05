@@ -168,7 +168,8 @@ module.exports = {
           children: [
             '/webpack/',
             '/webpack/basics',
-            '/webpack/advance'
+            '/webpack/advance',
+            '/webpack/dynamic-import'
           ]
         }
       ],

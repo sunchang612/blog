@@ -63,6 +63,7 @@
 - [webpack 进阶篇(2020.12.3)](https://sunchang612.github.io/blog/webpack/advance.html)
 - [webpack 动态js(2020.12.5)](https://sunchang612.github.io/blog/webpack/dynamic-import.html)
 - [webpack 打包组件和基础库(2020.12.5)](https://sunchang612.github.io/blog/webpack/component.html)
+- [webpack 构建速度和体积优化(2020.12.8)](https://sunchang612.github.io/blog/webpack/optimize.html)
 
 # axios
 - [封装 axios (2020.04.27)](https://sunchang612.github.io/blog/react/combat/axios.html)
@@ -90,3 +91,4 @@
 #### 好多知识要学，攒了太多的课要看了 😭  2020.08.17
 
 #### 最近要经常停更了，因为每天很忙，晚上还要学习，准备找工作了 2020.11.18
+#### 加油！

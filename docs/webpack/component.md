@@ -36,10 +36,8 @@ export default function add(a, b) {
       y = b[j] - '0'
       j --
     }
-    console.log('x ----> y ---->', x, y)
     // 每次求和必须要把进位加上
     sum = x + y + carry
-    console.log('sum ------>', sum)
     // 如果 sum >= 10 进位 = 1， sum - 10
     if(sum >= 10) {
       carry = 1
@@ -133,3 +131,4 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = require('./dist/large-number.js')
 }
 ```
+[查看代码](https://github.com/sunchang612/code-snippet/tree/master/webpack/webpack-large-number)

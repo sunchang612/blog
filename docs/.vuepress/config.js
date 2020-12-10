@@ -172,6 +172,7 @@ module.exports = {
             '/webpack/dynamic-import',
             '/webpack/component',
             '/webpack/optimize',
+            '/webpack/loader',
           ]
         }
       ],

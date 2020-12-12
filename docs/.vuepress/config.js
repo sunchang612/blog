@@ -173,6 +173,7 @@ module.exports = {
             '/webpack/component',
             '/webpack/optimize',
             '/webpack/loader',
+            '/webpack/plugins',
           ]
         }
       ],

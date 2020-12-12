@@ -65,6 +65,7 @@
 - [webpack 打包组件和基础库(2020.12.5)](https://sunchang612.github.io/blog/webpack/component.html)
 - [webpack 构建速度和体积优化(2020.12.8)](https://sunchang612.github.io/blog/webpack/optimize.html)
 - [webpack 编写一个 loader(2020.12.11)](https://sunchang612.github.io/blog/webpack/loader.html)
+- [webpack 编写一个 plugins(2020.12.12)](https://sunchang612.github.io/blog/webpack/plugins.html)
 
 # axios
 - [封装 axios (2020.04.27)](https://sunchang612.github.io/blog/react/combat/axios.html)

@@ -119,7 +119,8 @@ module.exports = {
           children: [
             '/react/combat/',
             '/react/combat/axios.md',
-            '/react/combat/hooks.md'
+            '/react/combat/hooks.md',
+            '/react/combat/vdom.md'
           ]
         },
         {

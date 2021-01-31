@@ -81,7 +81,7 @@ module.exports = {
       },
       {   
         text: 'CSS',
-        link: '/CSS/'
+        link: '/css/'
       },
       {
         text: 'GitHub',
@@ -228,12 +228,12 @@ module.exports = {
           ]
         }
       ],
-      '/CSS/': [
+      '/css/': [
         {
           title: '学习 CSS',
           collapsable: false,
           children: [
-            '/CSS/'
+            '/css/'
           ]
         }
       ]

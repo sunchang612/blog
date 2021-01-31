@@ -91,73 +91,6 @@ b = {
   }
 }
 ```
-
-## 实现 (5).add(3).minus(2) 功能
-- 实现就是在 Number 原型上增加这两个方法
-#### 简单版
-```js
-Number.prototype.add = function(n) {
-  return this.valueOf() + n;
-};
-Number.prototype.minus = function(n) {
-  return this.valueOf() - n;
-};
-console.log((5).add(3).minus(2));
-```
-#### 稍微严谨一些
-```js
-Number.prototype.add = function (value) {
-  let  number = parseFloat(value);
-  if (typeof number !== 'number' || Number.isNaN(number)) {
-      throw new Error('请输入数字或者数字字符串～');
-  };
-  return this + number;
-};
-Number.prototype.minus = function (value) {
-  let  number = parseFloat(value);
-  if (typeof number !== 'number' || Number.isNaN(number)) {
-      throw new Error('请输入数字或者数字字符串～');
-  }
-  return this - number;
-};
-console.log((5).add(3).minus(2));
-```
-
-> 但是，如果是计算小数的话，是 js 天生的劣势，它有浮点数陷阱，如果是要考虑这些的话，实现的代码就会相对复杂很多.
-
-#### 相对严谨的写法
-```js
-Number.MAX_SAFE_DIGITS = Number.MAX_SAFE_INTEGER.toString().length-2
-Number.prototype.digits = function(){
-	let result = (this.valueOf().toString().split('.')[1] || '').length
-	return result > Number.MAX_SAFE_DIGITS ? Number.MAX_SAFE_DIGITS : result
-}
-Number.prototype.add = function(i=0){
-	if (typeof i !== 'number') {
-    throw new Error('请输入正确的数字');
-  }
-	const v = this.valueOf();
-	const thisDigits = this.digits();
-	const iDigits = i.digits();
-	const baseNum = Math.pow(10, Math.max(thisDigits, iDigits));
-	const result = (v * baseNum + i * baseNum) / baseNum;
-	if(result>0){ return result > Number.MAX_SAFE_INTEGER ? Number.MAX_SAFE_INTEGER : result }
-	else{ return result < Number.MIN_SAFE_INTEGER ? Number.MIN_SAFE_INTEGER : result }
-}
-Number.prototype.minus = function(i=0){
-	if (typeof i !== 'number') {
-    throw new Error('请输入正确的数字');
-  }
-	const v = this.valueOf();
-	const thisDigits = this.digits();
-	const iDigits = i.digits();
-	const baseNum = Math.pow(10, Math.max(thisDigits, iDigits));
-	const result = (v * baseNum - i * baseNum) / baseNum;
-	if(result>0){ return result > Number.MAX_SAFE_INTEGER ? Number.MAX_SAFE_INTEGER : result }
-	else{ return result < Number.MIN_SAFE_INTEGER ? Number.MIN_SAFE_INTEGER : result }
-}
-```
-
 ## 输出以下代码执行的结果并解释为什么 (考察 splice length 等)
 ```js
 var obj = {
@@ -658,4 +591,28 @@ let obj = new Foo();
 obj.a();
 // 这时在调用 Foo.a 上面创建实例时，已经替换了全局 Foo 上的 a 方法，所以输出 1
 Foo.a();
+```
+
+## 实现延迟打印数组 [1,2,3,4,5]，每一次打印的初始延迟为 1000ms，增长延迟为 500ms。
+- 打印结果如下：
+```
+0s:    1
+1s:    2
+2.5s:  3
+4.5s:  4
+7s:    5
+```
+- 代码
+```js
+const arr = [1,2,3,4,5]
+arr.reduce(async(pre, cur, index) => {
+  await pre
+  const time = index === 0 ? 0 : 1000 + (index - 1) * 500
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log(cur)
+      resolve(time)
+    }, time)
+  })
+}, Promise.resolve(0))
 ```

@@ -15,6 +15,8 @@
   - [JavaScript 堆栈内存及内存释放](https://github.com/sunchang612/blog/issues/3)
   - [JavaScript 事件循环 宏任务微任务](https://sunchang612.github.io/blog/javascript/event-loop.html)
   - [JavaScript async/await 实现原理](https://sunchang612.github.io/blog/javascript/async.htm)
+  - [JavaScript Promise](https://sunchang612.github.io/blog/javascript/promise.htm)
+  - [JavaScript 手写 call、apply、bind](https://sunchang612.github.io/blog/javascript/bind-call-apply.htm)
 
 ## JavaScript 面试题
   - [概念型面试题](https://sunchang612.github.io/blog/javascript/interview/)

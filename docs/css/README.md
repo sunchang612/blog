@@ -11,6 +11,7 @@
 BFC 主要的作用是：
 1. 清除浮动
 2. 防止同一 BFC 容器中的相邻元素间的外边距重叠问题
+3. 自适应的两列布局（float + overflow）
 
 BFC 特点：
 1. 内部 box 在垂直方向，一个接一个的放置
@@ -19,6 +20,13 @@ BFC 特点：
 4. BFC 就是页面上一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此
 5. 计算 BFC 的高度时，浮动元素也参与计算（不会浮动坍塌）
 
+BFC 的约束规则：
+1. 内部的盒会在垂直方向一个接一个排列
+2. 处于同一个 BFC 中的元素互相影响，可能会发生外边距重叠
+3. 每个元素的 margin box 的左边与容器块 border box 的左边相接触（对于从左往右格式化，否则相反），即使存在浮动也是如此
+4. BFC 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外边的元素，反之亦然。
+5. 计算 BFC的高度时，考虑BFC所包含的所有元素，连浮动元素也参与计算
+6. 浮动盒区域不叠加到BFC 上
 ## css3 的新特性
 1. 布局更丰富
   - 移动端的崛起，催生了 CSS 媒介查询以及许多响应式布局特性的出现，如图片元素的 srcset 属性，css 的 object-fit 属性。
@@ -34,7 +42,7 @@ BFC 特点：
 1. clear
 2. BFC
 
-注意： clear 只对块级元素有效，clear并不是清除了浮动效果，而是使当前元素盒子的边不能喝前面的浮动元素 相邻。
+注意： clear 只对块级元素有效，clear并不是清除了浮动效果，而是使当前元素盒子的边不能和前面的浮动元素 相邻。
 
 ## 怎么让一个 div 水平垂直居中
 ```html
@@ -153,4 +161,101 @@ transform: scale(0.625);
 zoom: 0.625;
 ```
 5. 利用 js 获取到元素，修改 img 宽度
+
+## img 标签间距问题的原理以及如何解决
+#### 问题：
+- 众所周知，多个img并列显示时会有几像素间距，但是这并不是img标签特有的特性。将div设置为inline-block属性之后，div标签之间也会存在间距。
+#### 内部原理
+- 实际上，所有display属性为inline ， inline-block 的盒模型都会有文字特性，间距就是由于两个标签之间的空白引起的。
+
+#### 常用的解决方案
+1. 删除标签之间的空格
+```html
+<img src='1.png'/><img src='2.png'>
+```
+
+2. 将父级设置为font-size: 0px
+```html
+<div style="font-size: 0px">
+  <img src="img/1.jpg" alt="">
+  <img src="img/2.jpg" alt="">
+  <img src="img/3.jpg" alt="">
+  <img src="img/4.jpg" alt="">
+  <img src="img/5.jpg" alt="">
+</div>
+```
+3. 设置为使用负margin去除边距
+```html
+<style>
+img {
+  margin-left: -8px;
+}
+</style>
+<img src="img/1.jpg" alt="">
+<img src="img/2.jpg" alt="">
+<img src="img/3.jpg" alt="">
+<img src="img/4.jpg" alt="">
+<img src="img/5.jpg" alt="">
+```
+
+4. 设置浮动
+```html
+<style>
+img {
+  float: left;
+}
+</style>
+<img src="img/1.jpg" alt="">
+<img src="img/2.jpg" alt="">
+<img src="img/3.jpg" alt="">
+<img src="img/4.jpg" alt="">
+<img src="img/5.jpg" alt="">
+```
+
+## CSS 选择器以及这些原则器的优先级
+1. !important  in po nei te
+2. 内联样式  1000
+3. ID 选择器 100
+4. 类选择器、属性选择器、伪类选择器 10
+5. 元素选择器、关系选择器、伪元素选择器 1
+6. 通配符选择器（*） 0000
+
+
+## 了解盒子模型吗
+盒子的包含的区域：内容区域、内边距区域、边框区域和外边距区域。
+
+#### box-sizing
+- content-box（W3C盒子模型） : 元素的宽高大小表现为``内容``的大小。
+- border-box(IE盒子模型)： 元素的宽高大小表现为 `内容+内边距+边框`的大小。
+
+
+## CSS 三列布局中间自适应
+1. 使用定位的方式
+左右两个使用定位分别固定在左右两边，中间内容撑开，设置margin左右两边的距离
+```js
+ <div class="container">
+  <div class="left border">左边左边左边左边左边左边左边左边</div>
+  <div class="middle border">中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间中间</div>
+  <div class="right border">右边右边右边右边右边右边右边右边右边</div>
+</div>
+```
+```css
+.left, .right {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0px;
+}
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
+.middle {
+  margin: 0 100px 0 100px;
+}
+```
+
+2. flex
 

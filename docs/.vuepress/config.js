@@ -101,6 +101,7 @@ module.exports = {
             '/javascript/basics/event-loop.md',
             '/javascript/basics/async.md',
             '/javascript/basics/promise.md',
+            '/javascript/basics/bind-call-apply.md',
           ]
         },
         {

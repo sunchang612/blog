@@ -3,11 +3,10 @@ export default ({router}) => {
       // @pdai: 对每个页面点击添加百度统计
       if(typeof _hmt!='undefined'){
           if (to.path) {
-            console.log('to --------->', to.fullPath)
             _hmt.push(['_trackPageview', to.fullPath]);
           }
       }
 
-      next();     
+      next();
   })
 };

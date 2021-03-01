@@ -228,6 +228,9 @@ img {
 - content-box（W3C盒子模型） : 元素的宽高大小表现为``内容``的大小。
 - border-box(IE盒子模型)： 元素的宽高大小表现为 `内容+内边距+边框`的大小。
 
+用来控制元素的盒子模型的解析模式，默认为content-box，<font color='red'>但一般使用时都是用 border-box</font>
+context-box：W3C的标准盒子模型，设置元素的 height/width 属性指的是content部分的高/宽
+border-box：IE传统盒子模型。设置元素的height/width属性指的是border + padding + content部分的高/宽
 
 ## CSS 三列布局中间自适应
 1. 使用定位的方式

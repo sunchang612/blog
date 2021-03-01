@@ -98,4 +98,241 @@ Promise 解决过程是一个抽象的操作，即接收一个 promise 和一个
 - 4：如果 x 不为对象或函数
 以 x 作为值，执行 promise。
 
+#### 实现 promise 简单版
+```js
+class MyPromise {
+  constructor(fn) {
+    this.resolvedCallbacks = [];
+    this.rejectedCallbacks = [];
+    
+    this.state = 'PENDING';
+    this.value = '';
+    
+    fn(this.resolve.bind(this), this.reject.bind(this));
+    
+  }
+  
+  resolve(value) {
+    if (this.state === 'PENDING') {
+      this.state = 'RESOLVED';
+      this.value = value;
+      
+      this.resolvedCallbacks.map(cb => cb(value));   
+    }
+  }
+  
+  reject(value) {
+    if (this.state === 'PENDING') {
+      this.state = 'REJECTED';
+      this.value = value;
+      
+      this.rejectedCallbacks.map(cb => cb(value));
+    }
+  }
+  
+  then(onFulfilled, onRejected) {
+    if (this.state === 'PENDING') {
+      this.resolvedCallbacks.push(onFulfilled);
+      this.rejectedCallbacks.push(onRejected);
+      
+    }
+    
+    if (this.state === 'RESOLVED') {
+      onFulfilled(this.value);
+    }
+    
+    if (this.state === 'REJECTED') {
+      onRejected(this.value);
+    }
+  }
+}
+```
+- 另一种写法
+```js
+function Promise(fn) {
+  this.cbs = [];
+
+  const resolve = (value) => {
+    setTimeout(() => {
+      this.data = value;
+      this.cbs.forEach((cb) => cb(value));
+    });
+  }
+
+  fn(resolve);
+}
+
+Promise.prototype.then = function (onResolved) {
+  return new Promise((resolve) => {
+    this.cbs.push(() => {
+      const res = onResolved(this.data);
+      if (res instanceof Promise) {
+        res.then(resolve);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+};
+```
 #### 实现 Promise
+```js
+// 三种状态
+let PENDING = 'pending'
+let FULFILLED = 'fulfilled'
+let REJECTED = 'rejected'
+
+function MyPromise(exec) {
+  // 初始化属性
+  this.onRejectedFn = []
+  this.onFulfilledFn = []
+  this.state = PENDING
+  
+  const resoleve = (value) => {
+    // 使用 setTimeout 模拟异步调用
+    setTimeout(() => {
+      if (this.state === PENDING) {
+        this.state = FULFILLED
+        this.value = value
+        this.onFulfilledFn.forEach((f) => {
+          f(this.value)
+        })
+      }
+    })
+    
+  }
+  const reject = (error) => {
+    setTimeout(() => {
+      if (this.state === PENDING) {
+        this.state = REJECTED
+        this.error = error
+        this.onRejectedFn.forEach((f) => {
+          f(this.error)
+        })
+      }
+    })
+  }
+
+  try {
+    exec(resoleve, reject)
+  } catch (e) {
+    reject(e)
+  }
+}
+
+MyPromise.prototype.then = function (onFulfilled, onRejected){
+  // 根据 1 原则，如果可选参数不为函数时可以被忽略
+  onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : function (x) { return x }
+  onRejected = typeof onRejected === 'function' ? onRejected : function (x) { throw e }
+  // this.onFulfilledFn = []
+  // this.onRejectedFn = []
+  let promise
+  console.log('state ---->', this)
+  // 根据 2 规则，传入的回调函数时异步执行的，这里需要模拟异步用 setTimeout 模拟（但 setTimeout 是宏任务，这里其实是微任务）
+  // 根据 3/4 promise 的状态执行 onFulfilled 或 onRejected
+  switch(this.state) {
+    case FULFILLED:
+      // 根据 5 规则，then 被调用时应该返回一个新的 Promise，
+      promise = new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+          try {
+            const x = onFulfilled(this.value)
+            resolvePromise(promise, x, resolve, reject)
+          } catch (error) {
+            reject(error)
+          }
+        })
+      })
+      break
+    case REJECTED:
+      promise = new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+          try {
+            const x = onFulfilled(this.error)
+            resolvePromise(promise, x, resolve, reject)
+          } catch (error) {
+            reject(error)
+          }
+        })
+      })
+      break
+    case PENDING:
+      // 同时支持链式调用，在链式调用的情况下，如果 Promise 处于等待状态，那么需要保存多个 resolve 或 reject 函数，所以 onFulfilledFn 和 onRejectedFn 应该是数组 
+      promise = new MyPromise((resolve, reject) => {
+        this.onFulfilledFn.push(() => {
+          try {
+            const x = onFulfilled(this.value)
+            resolvePromise(promise, x, resolve, reject)
+          } catch (e) {
+            reject(e)
+          }
+        })
+        this.onRejectedFn.push(() => {
+          try {
+            const x = onRejected(this.error)
+            resolvePromise(promise, x, resolve, reject)
+          } catch (e) {
+            reject(e)
+          }
+        })
+      })
+      break
+  }
+  return promise
+}
+
+function resolvePromise(promise, x, resolve, reject) {
+  // 第一种情况 promise 和 x 相等 抛出错误
+  if (promise === x) {
+    return reject(new TypeError('x 不能与 promise 相等'))
+  }
+  // 根据第二种情况判断
+  if (x instanceof MyPromise) {
+    if (x.state === FULFILLED) {
+      resolve(x.value)
+    } else if (x.state === REJECTED) {
+      reject(x.error)
+    } else {
+      x.then((y) => {
+        resolvePromise(promise, y, resolve, reject)
+      }, reject)
+    }
+  } else if ((x !== null) && ((typeof x === 'object') || (typeof x === 'function'))) {
+    // 情况 3，将 x.then 取出然后执行，并将执行结果放入解决过程函数 resolvePromise() 中。 考虑到 x 可能只是一个 thenable 而非真正的 Promise，所以在调用 then() 函数的时候要设置一个变量 excuted 避免重复调用。同时记得在执行时添加异常捕获并及时拒绝当前 promise。
+    let excuted
+    try {
+      if (typeof x.then === 'function') {
+        x.then.call(x, (y) => {
+          if (excuted) return
+          excuted = true
+          return resolvePromise(promise, y, resolve, reject)
+        }, (e) => {
+          if (excuted) return
+          excuted = true
+          reject(e)
+        })
+      } else {
+        resolve(x)
+      }
+    } catch (e) {
+      if (excuted) return
+      excuted = true
+      reject(e)
+    }
+  } else {
+    resolve(x)
+  }
+}
+
+new MyPromise((resolve,reject) => {
+  console.log(1)
+  resolve(2)
+}).then((v) => {
+  console.log('v --->', v)
+  return v + 1
+}).then((a) => {
+  return a + 1
+}).then((c) => {
+  console.log(c)
+})
+```

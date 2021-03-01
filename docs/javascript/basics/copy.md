@@ -9,7 +9,7 @@ ES6 中 Object 的一方法，可以是来合并多个JS对象（能用来实现
 ```
 Object.assgin(target, ...sources)
 ```
-> 注意： Object.assgin 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。
+> 注意：<font color='red'> Object.assgin 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。</font>
 使用 Object.assign 方法注意以下几点：
 - 不会拷贝对象的继承属性
 - 不会拷贝对象的不可枚举属性
@@ -102,14 +102,14 @@ obj2.skills.js = '修改深拷贝'
 console.log(obj2) // { age: 25, name: "achang", skills: { js: "修改深拷贝" }}
 console.log(obj)// { age: 25, name: "achang", skills: { js: "深拷贝" }}
 ```
- ```但是``` JSON.stringify 实现深拷贝有些地方需要注意：
-  - 拷贝的对象的值如果有函数，undefined，symbol 这几种类型，经过 JSON.stringify 序列化后字符串中这个键值对会消失。
-  - 拷贝 Date 类型会变成字符串
-  - 无法拷贝不可枚举的属性
-  - 无法拷贝对象原型链
-  - 拷贝 RegExp 引用类型会变成空对象
-  - 对象中含有 NaN、infinity 以及 -infinity，JSON 序列化后的结果变成 null
-  - 无法拷贝对象的循环应用，即对象成环（obj[key]=obj）
+<font color='red'>但是</font> JSON.stringify 实现深拷贝有些地方需要注意：
+1. 拷贝的对象的值如果有函数，undefined，symbol 这几种类型，经过 JSON.stringify 序列化后字符串中这个键值对会消失。
+2. 拷贝 Date 类型会变成字符串
+3. 无法拷贝不可枚举的属性
+4. 无法拷贝对象原型链
+5. 拷贝 RegExp 引用类型会变成空对象
+6. 对象中含有 NaN、infinity 以及 -infinity，JSON 序列化后的结果变成 null
+7. 无法拷贝对象的循环应用，即对象成环（obj[key]=obj）
 
 ```js
 const obj3 = {

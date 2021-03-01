@@ -83,6 +83,10 @@ module.exports = {
         text: 'CSS',
         link: '/css/'
       },
+      {   
+        text: 'http',
+        link: '/http/'
+      },
       {
         text: 'GitHub',
         link: 'https://github.com/sunchang1996/blog'
@@ -102,6 +106,7 @@ module.exports = {
             '/javascript/basics/async.md',
             '/javascript/basics/promise.md',
             '/javascript/basics/bind-call-apply.md',
+            '/javascript/basics/copy.md',
           ]
         },
         {
@@ -253,6 +258,15 @@ module.exports = {
           collapsable: false,
           children: [
             '/css/'
+          ]
+        }
+      ],
+      '/http/': [
+        {
+          title: 'http',
+          collapsable: false,
+          children: [
+            '/http/'
           ]
         }
       ]

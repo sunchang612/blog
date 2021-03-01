@@ -45,6 +45,7 @@ module.exports = {
         items: [
           { text: 'JavaScript', link: '/javascript/basics/' },
           { text: 'js 面试题', link: '/javascript/interview/' },
+          { text: 'js 数据结构与算法', link: '/javascript/algorithm/' },
         ]
       },
       {
@@ -115,6 +116,25 @@ module.exports = {
           children: [
             '/javascript/interview/',
             '/javascript/interview/real-code.md'
+          ]
+        },
+        {
+          title: 'JS 数据结构与算法',
+          collapsable: false,
+          children: [
+            '/javascript/algorithm/',
+            '/javascript/algorithm/dui.md',
+            '/javascript/algorithm/duilie.md',
+            '/javascript/algorithm/dongtai.md',
+            '/javascript/algorithm/fener.md',
+            '/javascript/algorithm/greed.md',
+            '/javascript/algorithm/huisu.md',
+            '/javascript/algorithm/lianbiao.md',
+            '/javascript/algorithm/map.md',
+            '/javascript/algorithm/set.md',
+            '/javascript/algorithm/tree.md',
+            '/javascript/algorithm/tu.md',
+            '/javascript/algorithm/zhan.md',
           ]
         }
       ],

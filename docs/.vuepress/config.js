@@ -125,6 +125,24 @@ module.exports = {
           ]
         },
         {
+          title: 'react 面试题',
+          collapsable: true,
+          children: [
+            '/react/interview/',
+            '/react/interview/react-jsx.md',
+            '/react/interview/question.md',
+            '/react/interview/question1.md',
+            '/react/interview/question2.md',
+            '/react/interview/question3.md',
+            '/react/interview/question4.md',
+            '/react/interview/question5.md',
+            '/react/interview/question6.md',
+            '/react/interview/question7.md',
+            '/react/interview/question8.md',
+            '/react/interview/question9.md',
+          ]
+        },
+        {
           title: 'taro',
           collapsable: false,
           children: [

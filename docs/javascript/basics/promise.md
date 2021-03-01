@@ -1,21 +1,23 @@
-## Promise
+# Promise
+
+## 基本使用
 ```js
 const p = new Promise((resolve, reject) => {
   
 })
 p.then(() => {}, (err) => {} )
 ```
-#### state promise 状态
+### state promise 状态
 - pending 等待状态
 - fulfilled 成功
 - rejected 失败
 
 > pending 可以转换为 fulfilled 或 rejected，但 fulfilled 和 rejected 不可相互转换
 
-#### then
+### then
 - 第一个函数是成功的回调，第二个函数是失败的回调
 
-#### 链式调用
+### 链式调用
 - 每一个 then 方法都会返回一个新的 promise 实例，从而让 then 支持链式调用，并可以通过返回值将参数传递给下一个 then
 ```js
 p.then(function(num){
@@ -29,10 +31,10 @@ p.then(function(num){
 })
 ```
 
-#### catch 
+### catch 
 - 直接获取失败的回调， 也支持上一个 then 发生的错误
 
-#### Promise.all 
+### Promise.all 
 - 处理多个 Promise
 - 将多个 Promise 实例包装成一个 Promise 实例
 ```js
@@ -50,7 +52,7 @@ p.then(funciton(){
 ```
 - 组合后和普通的实例一样，有三种状态，三个都要成功，才返回成功，如果有一个失败，就是失败状态
 
-#### Promise.race 
+### Promise.race 
 - 与 all 方法类似，它是将多个 promise 实例包装成一个新的 Promise 实例
 - 不同的是，All 是大Promise（返回的Promise）的状态是由多个小 Promise 决定，而 race 是由第一个转变状态的 小Promise的状态决定，第一个是成功则成功，第一个是失败则失败
 

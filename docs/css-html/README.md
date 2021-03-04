@@ -259,6 +259,232 @@ border-box：IE传统盒子模型。设置元素的height/width属性指的是bo
   margin: 0 100px 0 100px;
 }
 ```
+2. 圣杯布局：必须将中间部分的HTML结构写在最前面，三个元素均设置向左浮动。两侧元素宽度固定，中间设置为100%；然后利用左侧元素负的margin值进行偏移，覆盖在中间的宽度之上；右侧的元素同样利用负的margin值进行覆盖，缺点：不能自适应高度
+```html
+<div class="wrap">
+  <div class="left">左侧</div>
+  <div class="middle">中间</div>
+  <div class="right">右侧</div>
+</div>
+```
+```css
+.middle {
+  float: left; 
+  width: 100%; 
+  height: 100px; 
+  background: lightblue;
+}
+.main {
+  margin: 0 140px 0 220px; 
+  background: lightpink;
+}
+.left {
+  float: left; 
+  width: 200px; 
+  height: 100px; 
+  background: coral; 
+  margin-left: -100%;
+}
+.right {
+  float: left;
+  width: 120px;
+  height: 100px; 
+  margin-left: -120px;
+}
+```
+3. position
+基于绝对定位的三栏布局：注意绝对定位的元素脱离文档流，相对于最近的已经定位的祖先元素进行定位。无需考虑HTML中结构的顺序
+左右两边绝对定位，中间使用 margin 控制两边间距
+```css
+  .left {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: coral;
+  }
+  .right {
+    width: 120px;
+    height: 100px;
+    position: absolute;
+    top:0; right: 0;
+    background: lightblue;
+  }
+  .middle {
+    height: 50px;
+    margin: 0 140px 0 220px;
+    background: #555;
+  }
+```
+4. flex
+将父元素设置为 flex 左右两边固定宽度，justify-content: space-between; 或者 flex: 1
 
-2. flex
 
+### 让一个元素上下左右居中
+```html
+<div class='wrapper'>
+  <div class='box'></div>
+</div>
+```
+1. absolute + transform：translate
+```css
+.box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+2. absolute l,r,b,t = 0 + margin: auto
+```css
+.box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+```
+
+3. flex
+```css
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+
+4. margin-left -宽高的一半
+```css
+.box {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+}
+```
+
+5. grid
+```css
+.wrapper {
+  height: 100%;
+  display: grid;
+}
+.box {
+  justify-self: center;
+  align-self: center;
+}
+```
+
+6. 利用 ::before
+```css
+.wrapper {
+  text-align: center;
+}
+.wrapper::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.box {
+  display: inline-block;
+  vertical-align: middle;
+}
+```
+
+7. flex + margin
+```css
+.wrapper {
+  display: flex;
+}
+.box {
+  margin: auto;
+}
+```
+
+8. grid + margin
+```css
+.wrapper {
+  display: grid;
+}
+.box {
+  margin: auto;
+}
+```
+
+### 弹性盒子中 flex: 0 1 auto 表示什么意思
+flex 的三个参数分别是
+1. flex-grow ：属性定义项目的放大比例，默认是0，即如果存在剩余空间，也不放大。
+    如：父元素 300，子A 100，子B 100，剩余空间 100
+    如果此时设置 flex-grow: 1
+    那么A就是 100 + 100* 1/2 = 150 B 也是同样的
+2. flex-shrink：属性定义了项目的缩小比例，默认是1，即如果空间不足，该项目将缩小
+    父400px,A 200px B 300px
+    AB总宽度超出父元素100px;
+    如果A不减少，则flex-shrink ：0,B减少；
+3. flex-basis：属性定义了在分配多余空间之前，项目占据的主轴空间（），设置了宽度跟宽度走，没设置宽度跟内容实际宽度走
+    该属性用来设置元素的宽度，当然 width 也可以用来设置元素的宽度，如果设置了width和flex-basis，那么flex-basis会覆盖width值。
+
+默认值为 0 1 auto
+
+flex:1 表示: flex-grow: 1; flex-shrink: 1; flex-basis: 0%
+
+### 求最终 left、right 的宽度
+```html
+<div class="container">
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  .container {
+    width: 600px;
+    height: 300px;
+    display: flex;
+  }
+  .left {
+    flex: 1 2 500px;
+    background: red;
+  }
+  .right {
+    flex: 2 1 400px;
+    background: blue;
+  }
+</style>
+```
+有一个公式: 
+子项的收缩宽度 = 子项收缩比例 * 溢出宽度
+子项收缩比例 = (子项宽度 * 子项收缩系数(flex-shrink)) / 所有子项的(宽度 * 收缩系数) 之和
+
+如上面的例子:
+子项的收缩宽度： (500 + 400) - 600 = 300
+
+`这里的 = 都是约等于`
+left 收缩比例：500 * 2 / (500 * 2 + 400 * 1) = 0.7142
+right 收缩比例：400 * 1 / (500 * 2 + 400 * 1) = 0.2857
+
+对应的
+  left 收缩宽度: 300 * 0.7142 = 214.26
+  right 收缩宽度：300 * 0.2857 = 85.71
+
+最后实际的宽度
+  left: 500 - 214.26 = 285.74
+  right: 400 - 87.71 = 314.29

@@ -95,6 +95,54 @@
 
   ![image.png](https://upload-images.jianshu.io/upload_images/13129256-a0c6e010344a7ca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+### 为什么要设计成异步
+因为每次执行 setState 都会触发渲染，执行一遍 re-render，而 re-render 的流程是：
+  setState => shouldComponentUpdate => componentWillUpdate => render => componentDidUpdate
+开销很大，所以每次执行 setState 都会先把它放到一个队列中，最后在一次性的批量更新。
+
+- 在 react 的源码中
+```js
+ReactComponent.prototype.setState = function (partialState, callback) {
+  this.updater.enqueueSetState(this, partialState);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'setState');
+  }
+};
+```
+- enqueueSetState
+```js
+enqueueSetState: function (publicInstance, partialState) {
+  // 根据 this 拿到对应的组件实例
+  var internalInstance = getInternalInstanceReadyForUpdate(publicInstance, 'setState');
+  // 这个 queue 对应的就是一个组件实例的 state 数组
+  var queue = internalInstance._pendingStateQueue || (internalInstance._pendingStateQueue = []);
+  queue.push(partialState);
+  //  enqueueUpdate 用来处理当前的组件实例
+  enqueueUpdate(internalInstance);
+}
+```
+  - enqueueSetState 做了两件事： 1. 将新的 state 放进组件的状态队列里；2. 用 enqueueUpdate 来处理将要更新的实例对象。
+
+- enqueueUpdate
+```js
+function enqueueUpdate(component) {
+  ensureInjected();
+  // 注意这一句是问题的关键，isBatchingUpdates标识着当前是否处于批量创建/更新组件的阶段
+  if (!batchingStrategy.isBatchingUpdates) {
+    // 若当前没有处于批量创建/更新组件的阶段，则立即更新组件
+    batchingStrategy.batchedUpdates(enqueueUpdate, component);
+    return;
+  }
+  // 否则，先把组件塞入 dirtyComponents 队列里，让它“再等等”
+  dirtyComponents.push(component);
+  if (component._updateBatchNumber == null) {
+    component._updateBatchNumber = updateBatchNumber + 1;
+  }
+}
+```
+
+isBatchingUpdates 就像是一把“锁”，isBatchingUpdates 的初始值是 false，意味着“当前并未进行任何批量更新操作”。每当 React 调用 batchedUpdate 去执行更新动作时，会先把这个锁给“锁上”（置为 true），表明“现在正处于批量更新过程中”。当锁被“锁上”的时候，任何需要更新的组件都只能暂时进入 dirtyComponents 里排队等候下一次的批量更新，而不能随意“插队”。
+
 ##### setState 主流程
 ![主流程.png](https://upload-images.jianshu.io/upload_images/13129256-f10bbcb4db276a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 

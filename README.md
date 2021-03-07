@@ -18,6 +18,7 @@
   - [JavaScript async/await 实现原理](https://sunchang612.github.io/blog/javascript/async.htm)
   - [JavaScript Promise](https://sunchang612.github.io/blog/javascript/promise.htm)
   - [JavaScript 手写 call、apply、bind](https://sunchang612.github.io/blog/javascript/bind-call-apply.htm)
+  - [总结 JavaScript 几种继承的优缺点](https://sunchang612.github.io/blog/javascript/extends.htm)
 
 ## JavaScript 面试题
   - [概念型面试题](https://sunchang612.github.io/blog/javascript/interview/)
@@ -25,7 +26,7 @@
 ## JavaScript 设计模式
   - [工厂模式](https://sunchang612.github.io/blog/javascript/Factory.html)
   - [构造函数模式](https://sunchang612.github.io/blog/javascript/constructor.html)
-  
+
 
 # JavaScript 数据结构与算法
   - [JavaScript 堆排序 (2020.5.17)](https://sunchang612.github.io/blog/js-algorithm/heapsort.html)
@@ -96,4 +97,5 @@
 #### 好多知识要学，攒了太多的课要看了 😭  2020.08.17
 
 #### 最近要经常停更了，因为每天很忙，晚上还要学习，准备找工作了 2020.11.18
-#### 加油！
+
+#### 要学会做减法，专心做一件事，心无杂念，别想太多

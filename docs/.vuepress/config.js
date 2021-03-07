@@ -108,6 +108,7 @@ module.exports = {
             '/javascript/basics/promise.md',
             '/javascript/basics/bind-call-apply.md',
             '/javascript/basics/copy.md',
+            '/javascript/basics/extends.md',
           ]
         },
         {

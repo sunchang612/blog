@@ -4,7 +4,7 @@
 - 异步任务
 - 同步任务
 
-### 什么是时间循环
+### 什么是事件循环
 1. 让同步任务和异步任务分别进入不同的执行”场所“，同步的进入主线程，异步的进入 Event table 并注册函数。
 2. 当指定的事情完成时，Event table 会将整个函数移入 Event Queue (队列)
 3. 主线程内的任务执行完毕为空后，会去 Event Queue 读取对应的函数，进行主线程执行。
@@ -48,7 +48,7 @@ process.nextTick(callback)类似node.js版的"setTimeout"，在事件循环的�
 - macro-task 宏任务： 包括整体代码 script， setTimeout， setInterval
 - micro-task 微任务： promise，process.nextTick
 
-> 事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。
+事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。
 ```js
 setTimeout(function() {
   console.log('setTimeout');
@@ -56,6 +56,7 @@ setTimeout(function() {
 
 new Promise(function(resolve) {
   console.log('promise');
+  resolve() // 如果这里不写的话，是不会执行 then 方法
 }).then(function() {
   console.log('then');
 })
@@ -63,12 +64,19 @@ new Promise(function(resolve) {
 console.log('console');
 ```
 - 这个代码作为宏任务，进入主线程
-先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)
-接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。
-遇到console.log()，立即执行。
-好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。
-ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中setTimeout对应的回调函数，立即执行。
-结束。
+- 先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)
+- 接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。
+- 遇到console.log()，立即执行。
+- 好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。
+- ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中setTimeout对应的回调函数，立即执行。
+- 结束。
+结果：
+```js
+promise
+console
+then
+setTimeout
+```
 
 ```js
 console.log('1');

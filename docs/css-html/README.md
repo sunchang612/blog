@@ -426,7 +426,7 @@ border-box：IE传统盒子模型。设置元素的height/width属性指的是bo
 }
 ```
 
-### 弹性盒子中 flex: 0 1 auto 表示什么意思
+## 弹性盒子中 flex: 0 1 auto 表示什么意思
 flex 的三个参数分别是
 1. flex-grow ：属性定义项目的放大比例，默认是0，即如果存在剩余空间，也不放大。
     如：父元素 300，子A 100，子B 100，剩余空间 100
@@ -443,7 +443,7 @@ flex 的三个参数分别是
 
 flex:1 表示: flex-grow: 1; flex-shrink: 1; flex-basis: 0%
 
-### 求最终 left、right 的宽度
+## 求最终 left、right 的宽度
 ```html
 <div class="container">
   <div class="left"></div>
@@ -471,8 +471,8 @@ flex:1 表示: flex-grow: 1; flex-shrink: 1; flex-basis: 0%
 </style>
 ```
 有一个公式: 
-子项的收缩宽度 = 子项收缩比例 * 溢出宽度
-子项收缩比例 = (子项宽度 * 子项收缩系数(flex-shrink)) / 所有子项的(宽度 * 收缩系数) 之和
+- 子项的收缩宽度 = 子项收缩比例 * 溢出宽度
+- 子项收缩比例 = (子项宽度 * 子项收缩系数(flex-shrink)) / 所有子项的(宽度 * 收缩系数) 之和
 
 如上面的例子:
 子项的收缩宽度： (500 + 400) - 600 = 300

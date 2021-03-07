@@ -2,14 +2,14 @@
 
 ## 浅拷贝
 先说一下浅拷贝的实现方式
-#### Object.assgin()
+#### Object.assign()
 ES6 中 Object 的一方法，可以是来合并多个JS对象（能用来实现浅拷贝）
 第一个参数拷贝的目标对象，后面的参数是拷贝的来源对象
 - 语法
 ```
-Object.assgin(target, ...sources)
+Object.assign(target, ...sources)
 ```
-> 注意：<font color='red'> Object.assgin 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。</font>
+> 注意：<font color='red'> Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。</font>
 使用 Object.assign 方法注意以下几点：
 - 不会拷贝对象的继承属性
 - 不会拷贝对象的不可枚举属性

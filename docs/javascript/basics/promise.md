@@ -14,9 +14,10 @@ p.then(() => {}, (err) => {} )
 
 > pending 可以转换为 fulfilled 或 rejected，但 fulfilled 和 rejected 不可相互转换
 
+## 原型方法
+
 ### then
 - 第一个函数是成功的回调，第二个函数是失败的回调
-
 ### 链式调用
 - 每一个 then 方法都会返回一个新的 promise 实例，从而让 then 支持链式调用，并可以通过返回值将参数传递给下一个 then
 ```js
@@ -34,6 +35,11 @@ p.then(function(num){
 ### catch 
 - 直接获取失败的回调， 也支持上一个 then 发生的错误
 
+### finally
+- 添加一个事件处理当前 Promise 对象，并且在原 Promise 对象解析完毕后，返回一个新的 Promise 对象
+<font color='red'>无论当前 Promise 什么状态，都会调用此方法</font>
+
+## 静态方法
 ### Promise.all 
 - 处理多个 Promise
 - 将多个 Promise 实例包装成一个 Promise 实例
@@ -52,17 +58,47 @@ p.then(funciton(){
 ```
 - 组合后和普通的实例一样，有三种状态，三个都要成功，才返回成功，如果有一个失败，就是失败状态
 
+### allSettled
+```js
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+const promises = [promise1, promise2];
+
+Promise.allSettled(promises).
+  then((results) => results.forEach((result) => console.log(result.status)));
+
+// expected output:
+// "fulfilled"
+// "rejected"
+```
+改方法返回给定 Promise 执行状态，并带有一个对象数组，每个对象表示对应的结果
+对于每个结果对象，都有一个 status 字符串。如果它的值为 fulfilled，则结果对象上存在一个 value 。如果值为 rejected，则存在一个 reason 。value（或 reason ）反映了每个 promise 决议（或拒绝）的值。
+
+- 但是：支持它的版本
+  - Chrome -> 76
+  - Safari -> 13
+  - Node   -> 12.9.0
+
 ### Promise.race 
 - 与 all 方法类似，它是将多个 promise 实例包装成一个新的 Promise 实例
-- 不同的是，All 是大Promise（返回的Promise）的状态是由多个小 Promise 决定，而 race 是由第一个转变状态的 小Promise的状态决定，第一个是成功则成功，第一个是失败则失败
+- 不同的是，All 是大Promise（返回的Promise）的状态是由多个小 Promise 决定，而 race 是由第一个转变状态的 小Promise的状态决定，第一个是成功则成功，第一个是失败则失败.
 
-### Promise 的局限性
+### Promise.any
+- 接收一个集合，当其中一个 promise 成功，则返回这个成功的值
+<font color='red'>注意：返回第一个成功的值（不考虑失败的）和 race 相反</font>
+
+- 但是：支持它的版本
+  - Chrome -> 85
+  - Safari -> 14
+  - Node   -> 15.0.0
+
+## Promise 的局限性
 1. 立即执行
 - 当一个 Promise 实例被创建时，内部代码就会立即被执行，而且无法从外部停止。
 2. 单次执行
 - Promise 处理的问题都是“一次性”的，因为一个 Promise 实例只能 resolve 或 reject 一次，所以面对某些需要持续响应的场景时就会变得力不从心。比如上传文件获取进度时，默认采用的就是通过事件监听的方式来实现。
 
-### 手写 Promise
+## 手写 Promise
 - Promise/A+ 的规范
 Promise 是一个对象或函数，对外提供了一个 then 函数，内部拥有3个状态
 #### then 函数

@@ -1,6 +1,5 @@
-# JavaScript 几种继承的优缺点
-
-## 原型继承
+# JavaScript几种继承的方式及优缺点
+## 1. 原型继承
 原型继承是比较常见一种继承方式
 ```js
 function Parent() {
@@ -37,9 +36,9 @@ console.log(child1)
 此时来看 child1 和 child2
 ![child1.png](https://upload-images.jianshu.io/upload_images/13129256-d9ed193b6b7a78ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 从上面的结果中发现，child2 修改了父类的属性，child1 的父类属性也被修改了。这也很好理解，因为它俩都继承与同一个 parent。它们的内存空间是共享的。
-所以：`原型的缺点：子类会共享父类的的内存空间`
+所以：```原型的缺点：子类会共享父类的的内存空间```
 
-## 构造函数继承（借用 call 或 apply）
+## 构造函数继承（call或apply）
 ```js
 function Parent() {
   this.name = 'parent'
@@ -54,6 +53,17 @@ Parent.prototype.getName = function () {
   console.log(this.name)
   return this.name
 }
+function Child () {
+  // 还有这里注意，如果子类的属性名和父类的一样，要看它的循序，谁在下面用谁的声明
+  this.name = 'Child'
+  // Parent.call(this)
+  Parent.apply(this)
+}
+const child1 = new Child
+const child2 = new Child
+child2.arr.push(3)
+console.log('child1 --->', child1)
+console.log('child2 --->', child2)
 ```
 ![call.png](https://upload-images.jianshu.io/upload_images/13129256-e062dc50185e7885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 使用这种解决了数据共享的问题

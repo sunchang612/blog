@@ -6,7 +6,7 @@
   - [深入理解 setState 机制 (2020.4.07)](https://sunchang612.github.io/blog/react/combat/)
   - [学习 React Hooks](https://sunchang612.github.io/blog/react/combat/hooks.html)
   - [理解虚拟 DOM，React 选择它是为了性能吗？](https://sunchang612.github.io/blog/react/combat/vdom.html)
-  - [React 面试题总结 (2021.3.1)](http://localhost:8080/blog/react/interview/)
+  - [React 面试题总结 (2021.3.1)](https://sunchang612.github.io/blog/react/interview/)
 
 # taro
   - [canvas 生成海报(2020.6.10)](https://sunchang612.github.io/blog/react/taro/)

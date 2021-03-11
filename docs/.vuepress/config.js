@@ -148,7 +148,8 @@ module.exports = {
             '/react/combat/',
             '/react/combat/axios.md',
             '/react/combat/hooks.md',
-            '/react/combat/vdom.md'
+            '/react/combat/vdom.md',
+            '/react/combat/controlled.md',
           ]
         },
         {

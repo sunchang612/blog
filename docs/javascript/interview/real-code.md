@@ -618,3 +618,16 @@ arr.reduce(async(pre, cur, index) => {
   })
 }, Promise.resolve(0))
 ```
+
+## 十进制转二进制
+- toString
+```js
+var num = 10
+console.log(num.toString(2))
+```
+
+## 二进制转十进制
+- parseInt
+```js
+console.log(parseInt("11",2))
+```

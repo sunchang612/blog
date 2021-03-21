@@ -488,3 +488,19 @@ right 收缩比例：400 * 1 / (500 * 2 + 400 * 1) = 0.2857
 最后实际的宽度
   left: 500 - 214.26 = 285.74
   right: 400 - 87.71 = 314.29
+
+## transform 遇到 Fixed 
+我们正常写 Fixed 时，都是相对于可视窗口定位，当如果父级标签有 transform 不为 none 的情况下，Fixed 会当相对于 transform 元素进行定位。会变得和 absolute 一样。
+
+- 为什么会这样？
+在新的 w3c CSS 标准中表示大概如下几个副作用：
+  - transform 的元素会影响 overflow area（溢出区域），也就是说，使用 transform 使得将元素移出了父元素之外的话，在父元素上使用overflow: scroll和overflow:auto的情况下，父元素将会展示出滚动条。
+  - transform 的元素会创造一个stack context (层叠上下文)，造成内部和外部的z-index相互独立。
+  - transform 的元素将会创建一个 containing block (包含块)，所有的 position 为absolute 和 fixed 的子元素、以及设置了background-attachment的背景将会相对于该元素的 padding box 布局。
+
+
+正式因为第三个规则，才使得 Fixed 失效的原因。
+
+
+- 自己的想法？为什么这么设计
+这样设计可以尽量减少对外部布局的影响，也减少外部对transform内部布局的影响，这样的话，浏览器引擎可以减少很多计算量。

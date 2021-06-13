@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>封装 axios | 阿畅的博客</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?831c09097cdcc6b28d4d8b82e7a2603b";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <meta name="description" content="JavaScript，Vue，React，Webpack，HTML，CSS等技术分享">
+    <meta name="author" content="achang">
+    <meta name="keywords" content="前端全栈知识体系， JavaScript， Vue， react， webpack， HTML， CSS，JavaScript算法">
+    <link rel="preload" href="/blog/assets/css/0.styles.8141bd51.css" as="style"><link rel="preload" href="/blog/assets/js/app.2a9e1d26.js" as="script"><link rel="preload" href="/blog/assets/js/2.b5c945b0.js" as="script"><link rel="preload" href="/blog/assets/js/73.56200c06.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1c9cb128.js"><link rel="prefetch" href="/blog/assets/js/100.d9c496b9.js"><link rel="prefetch" href="/blog/assets/js/101.2dbefcdd.js"><link rel="prefetch" href="/blog/assets/js/102.f49cba67.js"><link rel="prefetch" href="/blog/assets/js/11.c5365335.js"><link rel="prefetch" href="/blog/assets/js/12.20c384c5.js"><link rel="prefetch" href="/blog/assets/js/13.61f1338a.js"><link rel="prefetch" href="/blog/assets/js/14.f2c80a95.js"><link rel="prefetch" href="/blog/assets/js/15.fb46f9ec.js"><link rel="prefetch" href="/blog/assets/js/16.3c06bc72.js"><link rel="prefetch" href="/blog/assets/js/17.6b9fcc1c.js"><link rel="prefetch" href="/blog/assets/js/18.56735f47.js"><link rel="prefetch" href="/blog/assets/js/19.969cecdd.js"><link rel="prefetch" href="/blog/assets/js/20.a65e4dc5.js"><link rel="prefetch" href="/blog/assets/js/21.0e66da52.js"><link rel="prefetch" href="/blog/assets/js/22.f4fdebc1.js"><link rel="prefetch" href="/blog/assets/js/23.44d8c7d7.js"><link rel="prefetch" href="/blog/assets/js/24.e5051be4.js"><link rel="prefetch" href="/blog/assets/js/25.dcc79434.js"><link rel="prefetch" href="/blog/assets/js/26.00c15f45.js"><link rel="prefetch" href="/blog/assets/js/27.355b2a79.js"><link rel="prefetch" href="/blog/assets/js/28.68fd4985.js"><link rel="prefetch" href="/blog/assets/js/29.d84cc35f.js"><link rel="prefetch" href="/blog/assets/js/3.75a46af6.js"><link rel="prefetch" href="/blog/assets/js/30.3fb21238.js"><link rel="prefetch" href="/blog/assets/js/31.50b37b70.js"><link rel="prefetch" href="/blog/assets/js/32.869bfdb4.js"><link rel="prefetch" href="/blog/assets/js/33.b28c193b.js"><link rel="prefetch" href="/blog/assets/js/34.395eb3af.js"><link rel="prefetch" href="/blog/assets/js/35.c9607dd7.js"><link rel="prefetch" href="/blog/assets/js/36.406eefe2.js"><link rel="prefetch" href="/blog/assets/js/37.b2df7963.js"><link rel="prefetch" href="/blog/assets/js/38.9aacdff1.js"><link rel="prefetch" href="/blog/assets/js/39.34efcf53.js"><link rel="prefetch" href="/blog/assets/js/4.6b6fa8d7.js"><link rel="prefetch" href="/blog/assets/js/40.4d190766.js"><link rel="prefetch" href="/blog/assets/js/41.dcb0dea2.js"><link rel="prefetch" href="/blog/assets/js/42.4751f5ea.js"><link rel="prefetch" href="/blog/assets/js/43.1c65769a.js"><link rel="prefetch" href="/blog/assets/js/44.e2617f11.js"><link rel="prefetch" href="/blog/assets/js/45.284f7399.js"><link rel="prefetch" href="/blog/assets/js/46.4bfc2e64.js"><link rel="prefetch" href="/blog/assets/js/47.18b91d63.js"><link rel="prefetch" href="/blog/assets/js/48.0eb5b63f.js"><link rel="prefetch" href="/blog/assets/js/49.040a5bb1.js"><link rel="prefetch" href="/blog/assets/js/5.4f36be39.js"><link rel="prefetch" href="/blog/assets/js/50.280a74de.js"><link rel="prefetch" href="/blog/assets/js/51.1bff542f.js"><link rel="prefetch" href="/blog/assets/js/52.21278878.js"><link rel="prefetch" href="/blog/assets/js/53.bc5246ce.js"><link rel="prefetch" href="/blog/assets/js/54.da98e62c.js"><link rel="prefetch" href="/blog/assets/js/55.41da599e.js"><link rel="prefetch" href="/blog/assets/js/56.0e5b1be4.js"><link rel="prefetch" href="/blog/assets/js/57.b3233b28.js"><link rel="prefetch" href="/blog/assets/js/58.d3aefbaf.js"><link rel="prefetch" href="/blog/assets/js/59.b9cec5f9.js"><link rel="prefetch" href="/blog/assets/js/6.5101726b.js"><link rel="prefetch" href="/blog/assets/js/60.0dc2c6a9.js"><link rel="prefetch" href="/blog/assets/js/61.4f15fd19.js"><link rel="prefetch" href="/blog/assets/js/62.22e1fa3a.js"><link rel="prefetch" href="/blog/assets/js/63.42f92443.js"><link rel="prefetch" href="/blog/assets/js/64.56bf1bf7.js"><link rel="prefetch" href="/blog/assets/js/65.9f9ba7cc.js"><link rel="prefetch" href="/blog/assets/js/66.a0149269.js"><link rel="prefetch" href="/blog/assets/js/67.958096a6.js"><link rel="prefetch" href="/blog/assets/js/68.ce31b0f8.js"><link rel="prefetch" href="/blog/assets/js/69.e0b63645.js"><link rel="prefetch" href="/blog/assets/js/7.f595f157.js"><link rel="prefetch" href="/blog/assets/js/70.04ba63ca.js"><link rel="prefetch" href="/blog/assets/js/71.14a3e361.js"><link rel="prefetch" href="/blog/assets/js/72.fe00762e.js"><link rel="prefetch" href="/blog/assets/js/74.a609f591.js"><link rel="prefetch" href="/blog/assets/js/75.4bb00fd2.js"><link rel="prefetch" href="/blog/assets/js/76.81ee7781.js"><link rel="prefetch" href="/blog/assets/js/77.a36daa4b.js"><link rel="prefetch" href="/blog/assets/js/78.76314acb.js"><link rel="prefetch" href="/blog/assets/js/79.23710e07.js"><link rel="prefetch" href="/blog/assets/js/8.3a49e8ed.js"><link rel="prefetch" href="/blog/assets/js/80.79f1e427.js"><link rel="prefetch" href="/blog/assets/js/81.09e15374.js"><link rel="prefetch" href="/blog/assets/js/82.1457d6e3.js"><link rel="prefetch" href="/blog/assets/js/83.c037e760.js"><link rel="prefetch" href="/blog/assets/js/84.61a7ef93.js"><link rel="prefetch" href="/blog/assets/js/85.ef000657.js"><link rel="prefetch" href="/blog/assets/js/86.7bbe8636.js"><link rel="prefetch" href="/blog/assets/js/87.0b020f6e.js"><link rel="prefetch" href="/blog/assets/js/88.6d380c7b.js"><link rel="prefetch" href="/blog/assets/js/89.9a22d7e4.js"><link rel="prefetch" href="/blog/assets/js/9.4705cb4e.js"><link rel="prefetch" href="/blog/assets/js/90.e1d50ec8.js"><link rel="prefetch" href="/blog/assets/js/91.3f1edaa3.js"><link rel="prefetch" href="/blog/assets/js/92.6fa69482.js"><link rel="prefetch" href="/blog/assets/js/93.dc85e9dc.js"><link rel="prefetch" href="/blog/assets/js/94.2f42b212.js"><link rel="prefetch" href="/blog/assets/js/95.4bf7ddff.js"><link rel="prefetch" href="/blog/assets/js/96.ad15f572.js"><link rel="prefetch" href="/blog/assets/js/97.8615c32e.js"><link rel="prefetch" href="/blog/assets/js/98.df4af9cf.js"><link rel="prefetch" href="/blog/assets/js/99.6bb9e42c.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.8141bd51.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">阿畅的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/javascript/basics/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/interview/" class="nav-link">
+  js 面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/algorithm/" class="nav-link">
+  js 数据结构与算法
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/js-algorithm/" class="nav-link">
+  js 算法与数据结构
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/react/combat/" class="nav-link router-link-active">
+  react
+</a></li><li class="dropdown-item"><!----> <a href="/blog/react/taro/" class="nav-link">
+  taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/Vue/principle/" class="nav-link">
+  Vue 原理
+</a></li><li class="dropdown-item"><!----> <a href="/blog/Vue/combat/" class="nav-link">
+  Vue 项目实战
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/webpack/" class="nav-link">
+  webpack
+</a></div><div class="nav-item"><a href="/blog/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/sequelize/" class="nav-link">
+  sequelize
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/css-html/" class="nav-link">
+  CSS+HTML
+</a></div><div class="nav-item"><a href="/blog/http/" class="nav-link">
+  http
+</a></div><div class="nav-item"><a href="https://github.com/sunchang1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/javascript/basics/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/interview/" class="nav-link">
+  js 面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/algorithm/" class="nav-link">
+  js 数据结构与算法
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/js-algorithm/" class="nav-link">
+  js 算法与数据结构
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/react/combat/" class="nav-link router-link-active">
+  react
+</a></li><li class="dropdown-item"><!----> <a href="/blog/react/taro/" class="nav-link">
+  taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/Vue/principle/" class="nav-link">
+  Vue 原理
+</a></li><li class="dropdown-item"><!----> <a href="/blog/Vue/combat/" class="nav-link">
+  Vue 项目实战
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/webpack/" class="nav-link">
+  webpack
+</a></div><div class="nav-item"><a href="/blog/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/sequelize/" class="nav-link">
+  sequelize
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/css-html/" class="nav-link">
+  CSS+HTML
+</a></div><div class="nav-item"><a href="/blog/http/" class="nav-link">
+  http
+</a></div><div class="nav-item"><a href="https://github.com/sunchang1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>react 基础与原理</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/react/combat/" class="sidebar-link">react setState 机制</a></li><li><a href="/blog/react/combat/axios.html" class="active sidebar-link">封装 axios</a></li><li><a href="/blog/react/combat/hooks.html" class="sidebar-link">学习 React Hooks</a></li><li><a href="/blog/react/combat/vdom.html" class="sidebar-link">理解虚拟 DOM ，React 选择它是为了性能吗？</a></li><li><a href="/blog/react/combat/controlled.html" class="sidebar-link">受控组件与非受控组件</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>react 面试题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>taro</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/react/taro/" class="sidebar-link">taro canvas 生成海报</a></li><li><a href="/blog/react/taro/install.html" class="sidebar-link">安装指定的版本</a></li><li><a href="/blog/react/taro/qrcode.html" class="sidebar-link">小程序动态生成带参数的二维码</a></li><li><a href="/blog/react/taro/params-code.html" class="sidebar-link">小程序获取二维码中的参数</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="封装-axios"><a href="#封装-axios" class="header-anchor">#</a> 封装 axios</h1> <p>axios 一个很常用的 Vue 或 react 项目中使用的第三方请求接口的库
+接下来分享一下平时自己业务项目中，怎么封装 axios</p> <h4 id="首先用-crate-创建一个实例"><a href="#首先用-crate-创建一个实例" class="header-anchor">#</a> 首先用 crate 创建一个实例</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token keyword">const</span> request <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    baseURL<span class="token operator">:</span> <span class="token string">'https://xxxx'</span><span class="token punctuation">,</span>
+    timeout<span class="token operator">:</span> <span class="token number">100000</span><span class="token punctuation">,</span>
+    headers<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;Content-type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;application/json;charset=UTF-8&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> request
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>一般会用到上面这几个参数
+<ul><li>baseURL：将自动加在 'url' 前面，例如你可以放公司接口域名前缀，但会用到本地，测试，线上环境的 URL 地址不同，需要通过参数来判断</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token constant">NODE_ENV</span> <span class="token punctuation">}</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env
+  <span class="token keyword">const</span> <span class="token constant">HOST</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    development<span class="token operator">:</span> <span class="token string">'http://192.168.1.111:8080'</span><span class="token punctuation">,</span>
+    production<span class="token operator">:</span> <span class="token string">'https://xxxx.com'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token constant">NODE_ENV</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>timeout：接口请求的超时时间</li> <li>headers：自定义的请求头</li></ul></li></ul> <h4 id="添加请求前的拦截器"><a href="#添加请求前的拦截器" class="header-anchor">#</a> 添加请求前的拦截器</h4> <ul><li>例如，我们常用的请求前加 loading 效果，就可以这么写</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+    <span class="token parameter">request</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 这里调用 loading 组件</span>
+      <span class="token comment">// loading 可以自己实现，或者用第三方组件库</span>
+      Toast<span class="token punctuation">.</span><span class="token function">loading</span><span class="token punctuation">(</span><span class="token string">'Loading...'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> request
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果报错，对错误进行处理</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h4 id="添加响应的拦截器"><a href="#添加响应的拦截器" class="header-anchor">#</a> 添加响应的拦截器</h4> <ul><li>我们可以在这里处理，服务端的正确返回结果，或者优化接口报错提醒，关闭 loading 效果，增加错误埋点等。 详细看下面每行代码注释</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+  <span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 例如，服务端状态是 200 时，关闭 loading 效果，返回 response</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Toast<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> response
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 一般服务端不会返回直接系统级 的报错状态吗，例如返回 2000 ，表示接口请求报错</span>
+      Toast<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment">// 关闭loading效果，弹出 message 组件，告诉用户哪里出错了</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$message</span><span class="token punctuation">(</span><span class="token string">'xxxx'</span><span class="token punctuation">)</span>
+      <span class="token comment">// 还可以增加埋点，方便我们排查错误</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 这里处理 系统 报错，例如： 500，400，403 等</span>
+  <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 同样，需要关闭 loading</span>
+    Toast<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 处理 500 的报错</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>response <span class="token operator">&amp;&amp;</span> error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">500</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>response <span class="token operator">&amp;&amp;</span> error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">413</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'文件太大啦！'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><h4 id="增加默认值"><a href="#增加默认值" class="header-anchor">#</a> 增加默认值</h4> <ul><li>例如：把登陆之后后端返回的 token 塞到 header 里面</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>request.defaults.headers.common['accesstoken'] = token
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>request 是 axios.create() 创建后返回的实例</p> <h4 id="在项目中使用"><a href="#在项目中使用" class="header-anchor">#</a> 在项目中使用</h4> <ul><li>使用 async await 的方式
+例如：在 Vue mounted 生命周期里</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>  <span class="token keyword">async</span> <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> request<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/api/xxx'</span><span class="token punctuation">,</span> <span class="token operator">...</span>params<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>request.post 请求的方式，有 get，delete，put 等</li> <li>params 需要传递给接口的参数</li> <li>data 接口的返回结果</li></ul> <h4 id="最后封装-axios-完成的代码"><a href="#最后封装-axios-完成的代码" class="header-anchor">#</a> 最后封装 axios 完成的代码</h4> <ul><li>可自行根据业务需求添加，我分享出来整体的结构</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'element-ui'</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token constant">NODE_ENV</span> <span class="token punctuation">}</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env
+
+<span class="token keyword">const</span> <span class="token constant">HOST</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  development<span class="token operator">:</span> <span class="token string">'http://192.168.1.xxx:8080'</span><span class="token punctuation">,</span>
+  production<span class="token operator">:</span> <span class="token string">'https://xxx'</span>
+<span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token constant">NODE_ENV</span><span class="token punctuation">]</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> request <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token operator">:</span> <span class="token constant">HOST</span><span class="token punctuation">,</span>
+  timeout<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+  headers<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json; charset=utf-8'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+  <span class="token parameter">req</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    Toast<span class="token punctuation">.</span><span class="token function">loading</span><span class="token punctuation">(</span><span class="token string">'Loading...'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> req
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> error
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+
+request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+  <span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Toast<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> response
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      Message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>response <span class="token operator">&amp;&amp;</span> error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">500</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/react/combat/" class="prev router-link-active">
+        react setState 机制
+      </a></span> <span class="next"><a href="/blog/react/combat/hooks.html">
+        学习 React Hooks
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.2a9e1d26.js" defer></script><script src="/blog/assets/js/2.b5c945b0.js" defer></script><script src="/blog/assets/js/73.56200c06.js" defer></script>
+  </body>
+</html>

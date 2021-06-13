@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>缺失的第一个正数 | 阿畅的博客</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?831c09097cdcc6b28d4d8b82e7a2603b";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <meta name="description" content="JavaScript，Vue，React，Webpack，HTML，CSS等技术分享">
+    <meta name="author" content="achang">
+    <meta name="keywords" content="前端全栈知识体系， JavaScript， Vue， react， webpack， HTML， CSS，JavaScript算法">
+    <link rel="preload" href="/blog/assets/css/0.styles.8141bd51.css" as="style"><link rel="preload" href="/blog/assets/js/app.2a9e1d26.js" as="script"><link rel="preload" href="/blog/assets/js/2.b5c945b0.js" as="script"><link rel="preload" href="/blog/assets/js/53.bc5246ce.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1c9cb128.js"><link rel="prefetch" href="/blog/assets/js/100.d9c496b9.js"><link rel="prefetch" href="/blog/assets/js/101.2dbefcdd.js"><link rel="prefetch" href="/blog/assets/js/102.f49cba67.js"><link rel="prefetch" href="/blog/assets/js/11.c5365335.js"><link rel="prefetch" href="/blog/assets/js/12.20c384c5.js"><link rel="prefetch" href="/blog/assets/js/13.61f1338a.js"><link rel="prefetch" href="/blog/assets/js/14.f2c80a95.js"><link rel="prefetch" href="/blog/assets/js/15.fb46f9ec.js"><link rel="prefetch" href="/blog/assets/js/16.3c06bc72.js"><link rel="prefetch" href="/blog/assets/js/17.6b9fcc1c.js"><link rel="prefetch" href="/blog/assets/js/18.56735f47.js"><link rel="prefetch" href="/blog/assets/js/19.969cecdd.js"><link rel="prefetch" href="/blog/assets/js/20.a65e4dc5.js"><link rel="prefetch" href="/blog/assets/js/21.0e66da52.js"><link rel="prefetch" href="/blog/assets/js/22.f4fdebc1.js"><link rel="prefetch" href="/blog/assets/js/23.44d8c7d7.js"><link rel="prefetch" href="/blog/assets/js/24.e5051be4.js"><link rel="prefetch" href="/blog/assets/js/25.dcc79434.js"><link rel="prefetch" href="/blog/assets/js/26.00c15f45.js"><link rel="prefetch" href="/blog/assets/js/27.355b2a79.js"><link rel="prefetch" href="/blog/assets/js/28.68fd4985.js"><link rel="prefetch" href="/blog/assets/js/29.d84cc35f.js"><link rel="prefetch" href="/blog/assets/js/3.75a46af6.js"><link rel="prefetch" href="/blog/assets/js/30.3fb21238.js"><link rel="prefetch" href="/blog/assets/js/31.50b37b70.js"><link rel="prefetch" href="/blog/assets/js/32.869bfdb4.js"><link rel="prefetch" href="/blog/assets/js/33.b28c193b.js"><link rel="prefetch" href="/blog/assets/js/34.395eb3af.js"><link rel="prefetch" href="/blog/assets/js/35.c9607dd7.js"><link rel="prefetch" href="/blog/assets/js/36.406eefe2.js"><link rel="prefetch" href="/blog/assets/js/37.b2df7963.js"><link rel="prefetch" href="/blog/assets/js/38.9aacdff1.js"><link rel="prefetch" href="/blog/assets/js/39.34efcf53.js"><link rel="prefetch" href="/blog/assets/js/4.6b6fa8d7.js"><link rel="prefetch" href="/blog/assets/js/40.4d190766.js"><link rel="prefetch" href="/blog/assets/js/41.dcb0dea2.js"><link rel="prefetch" href="/blog/assets/js/42.4751f5ea.js"><link rel="prefetch" href="/blog/assets/js/43.1c65769a.js"><link rel="prefetch" href="/blog/assets/js/44.e2617f11.js"><link rel="prefetch" href="/blog/assets/js/45.284f7399.js"><link rel="prefetch" href="/blog/assets/js/46.4bfc2e64.js"><link rel="prefetch" href="/blog/assets/js/47.18b91d63.js"><link rel="prefetch" href="/blog/assets/js/48.0eb5b63f.js"><link rel="prefetch" href="/blog/assets/js/49.040a5bb1.js"><link rel="prefetch" href="/blog/assets/js/5.4f36be39.js"><link rel="prefetch" href="/blog/assets/js/50.280a74de.js"><link rel="prefetch" href="/blog/assets/js/51.1bff542f.js"><link rel="prefetch" href="/blog/assets/js/52.21278878.js"><link rel="prefetch" href="/blog/assets/js/54.da98e62c.js"><link rel="prefetch" href="/blog/assets/js/55.41da599e.js"><link rel="prefetch" href="/blog/assets/js/56.0e5b1be4.js"><link rel="prefetch" href="/blog/assets/js/57.b3233b28.js"><link rel="prefetch" href="/blog/assets/js/58.d3aefbaf.js"><link rel="prefetch" href="/blog/assets/js/59.b9cec5f9.js"><link rel="prefetch" href="/blog/assets/js/6.5101726b.js"><link rel="prefetch" href="/blog/assets/js/60.0dc2c6a9.js"><link rel="prefetch" href="/blog/assets/js/61.4f15fd19.js"><link rel="prefetch" href="/blog/assets/js/62.22e1fa3a.js"><link rel="prefetch" href="/blog/assets/js/63.42f92443.js"><link rel="prefetch" href="/blog/assets/js/64.56bf1bf7.js"><link rel="prefetch" href="/blog/assets/js/65.9f9ba7cc.js"><link rel="prefetch" href="/blog/assets/js/66.a0149269.js"><link rel="prefetch" href="/blog/assets/js/67.958096a6.js"><link rel="prefetch" href="/blog/assets/js/68.ce31b0f8.js"><link rel="prefetch" href="/blog/assets/js/69.e0b63645.js"><link rel="prefetch" href="/blog/assets/js/7.f595f157.js"><link rel="prefetch" href="/blog/assets/js/70.04ba63ca.js"><link rel="prefetch" href="/blog/assets/js/71.14a3e361.js"><link rel="prefetch" href="/blog/assets/js/72.fe00762e.js"><link rel="prefetch" href="/blog/assets/js/73.56200c06.js"><link rel="prefetch" href="/blog/assets/js/74.a609f591.js"><link rel="prefetch" href="/blog/assets/js/75.4bb00fd2.js"><link rel="prefetch" href="/blog/assets/js/76.81ee7781.js"><link rel="prefetch" href="/blog/assets/js/77.a36daa4b.js"><link rel="prefetch" href="/blog/assets/js/78.76314acb.js"><link rel="prefetch" href="/blog/assets/js/79.23710e07.js"><link rel="prefetch" href="/blog/assets/js/8.3a49e8ed.js"><link rel="prefetch" href="/blog/assets/js/80.79f1e427.js"><link rel="prefetch" href="/blog/assets/js/81.09e15374.js"><link rel="prefetch" href="/blog/assets/js/82.1457d6e3.js"><link rel="prefetch" href="/blog/assets/js/83.c037e760.js"><link rel="prefetch" href="/blog/assets/js/84.61a7ef93.js"><link rel="prefetch" href="/blog/assets/js/85.ef000657.js"><link rel="prefetch" href="/blog/assets/js/86.7bbe8636.js"><link rel="prefetch" href="/blog/assets/js/87.0b020f6e.js"><link rel="prefetch" href="/blog/assets/js/88.6d380c7b.js"><link rel="prefetch" href="/blog/assets/js/89.9a22d7e4.js"><link rel="prefetch" href="/blog/assets/js/9.4705cb4e.js"><link rel="prefetch" href="/blog/assets/js/90.e1d50ec8.js"><link rel="prefetch" href="/blog/assets/js/91.3f1edaa3.js"><link rel="prefetch" href="/blog/assets/js/92.6fa69482.js"><link rel="prefetch" href="/blog/assets/js/93.dc85e9dc.js"><link rel="prefetch" href="/blog/assets/js/94.2f42b212.js"><link rel="prefetch" href="/blog/assets/js/95.4bf7ddff.js"><link rel="prefetch" href="/blog/assets/js/96.ad15f572.js"><link rel="prefetch" href="/blog/assets/js/97.8615c32e.js"><link rel="prefetch" href="/blog/assets/js/98.df4af9cf.js"><link rel="prefetch" href="/blog/assets/js/99.6bb9e42c.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.8141bd51.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">阿畅的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/javascript/basics/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/interview/" class="nav-link">
+  js 面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/algorithm/" class="nav-link">
+  js 数据结构与算法
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/js-algorithm/" class="nav-link router-link-active">
+  js 算法与数据结构
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/react/combat/" class="nav-link">
+  react
+</a></li><li class="dropdown-item"><!----> <a href="/blog/react/taro/" class="nav-link">
+  taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/Vue/principle/" class="nav-link">
+  Vue 原理
+</a></li><li class="dropdown-item"><!----> <a href="/blog/Vue/combat/" class="nav-link">
+  Vue 项目实战
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/webpack/" class="nav-link">
+  webpack
+</a></div><div class="nav-item"><a href="/blog/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/sequelize/" class="nav-link">
+  sequelize
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/css-html/" class="nav-link">
+  CSS+HTML
+</a></div><div class="nav-item"><a href="/blog/http/" class="nav-link">
+  http
+</a></div><div class="nav-item"><a href="https://github.com/sunchang1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/javascript/basics/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/interview/" class="nav-link">
+  js 面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/algorithm/" class="nav-link">
+  js 数据结构与算法
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/js-algorithm/" class="nav-link router-link-active">
+  js 算法与数据结构
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/react/combat/" class="nav-link">
+  react
+</a></li><li class="dropdown-item"><!----> <a href="/blog/react/taro/" class="nav-link">
+  taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/Vue/principle/" class="nav-link">
+  Vue 原理
+</a></li><li class="dropdown-item"><!----> <a href="/blog/Vue/combat/" class="nav-link">
+  Vue 项目实战
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/webpack/" class="nav-link">
+  webpack
+</a></div><div class="nav-item"><a href="/blog/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/sequelize/" class="nav-link">
+  sequelize
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/css-html/" class="nav-link">
+  CSS+HTML
+</a></div><div class="nav-item"><a href="/blog/http/" class="nav-link">
+  http
+</a></div><div class="nav-item"><a href="https://github.com/sunchang1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>JavaScript 算法与数据结构</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js-algorithm/" class="sidebar-link">卡牌分组</a></li><li><a href="/blog/js-algorithm/str-reverse.html" class="sidebar-link">反转字符串中的单词</a></li><li><a href="/blog/js-algorithm/flower.html" class="sidebar-link">种花问题</a></li><li><a href="/blog/js-algorithm/gray-code.html" class="sidebar-link">格雷编码</a></li><li><a href="/blog/js-algorithm/regex-str.html" class="sidebar-link">重复的子字符串</a></li><li><a href="/blog/js-algorithm/bubbling.html" class="sidebar-link">冒泡排序</a></li><li><a href="/blog/js-algorithm/selectionSort.html" class="sidebar-link">选择排序</a></li><li><a href="/blog/js-algorithm/isMatch.html" class="sidebar-link">正则表达式匹配</a></li><li><a href="/blog/js-algorithm/letterCombinations.html" class="sidebar-link">电话号码的字母组合</a></li><li><a href="/blog/js-algorithm/countBinarySubstrings.html" class="sidebar-link">计数二进制子串</a></li><li><a href="/blog/js-algorithm/sortArrayByParity.html" class="sidebar-link">按奇偶排序数组</a></li><li><a href="/blog/js-algorithm/maximumGap.html" class="sidebar-link">数组最大间距</a></li><li><a href="/blog/js-algorithm/findKthLargest.html" class="sidebar-link">数组中的第K个最大元素</a></li><li><a href="/blog/js-algorithm/firstMissingPositive.html" class="active sidebar-link">缺失的第一个正数</a></li><li><a href="/blog/js-algorithm/restoreIpAddresses.html" class="sidebar-link">递归 复原 IP 地址</a></li><li><a href="/blog/js-algorithm/findSubstring.html" class="sidebar-link">递归 串联所有单词的子串</a></li><li><a href="/blog/js-algorithm/calPoints.html" class="sidebar-link">棒球比赛 （栈）</a></li><li><a href="/blog/js-algorithm/maximalRectangle.html" class="sidebar-link">最大矩形</a></li><li><a href="/blog/js-algorithm/CircularQueue.html" class="sidebar-link">设计循环队列</a></li><li><a href="/blog/js-algorithm/leastInterval.html" class="sidebar-link">任务调度器 （队列）</a></li><li><a href="/blog/js-algorithm/sortList.html" class="sidebar-link">排序链表</a></li><li><a href="/blog/js-algorithm/spiralOrder.html" class="sidebar-link">螺旋矩阵</a></li><li><a href="/blog/js-algorithm/rotate.html" class="sidebar-link">旋转图像</a></li><li><a href="/blog/js-algorithm/isSymmetric.html" class="sidebar-link">对称二叉树</a></li><li><a href="/blog/js-algorithm/heapsort.html" class="sidebar-link">堆 排序</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="缺失的第一个正数"><a href="#缺失的第一个正数" class="header-anchor">#</a> 缺失的第一个正数</h1> <p>题目：
+给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。</p> <p>示例 1:
+输入: [1,2,0]
+输出: 3</p> <p>示例 2:
+输入: [3,4,-1,1]
+输出: 2</p> <p>示例 3:
+输入: [7,8,9,11,12]
+输出: 1
+ 
+提示：
+你的算法的时间复杂度应为O(n)，并且只能使用常数级别的额外空间。</p> <p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/first-missing-positive</p> <ul><li><code>思路</code> 根据示例看出，如果最小数不是1 直接返回 1，如果是依次计算两个数的差值为1，如果差值不是1，则返回当前值 + 1</li></ul> <p>看代码：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">firstMissingPositive</span><span class="token punctuation">(</span><span class="token parameter">ary</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 首选过滤到非整数</span>
+  ary <span class="token operator">=</span> ary<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">a</span> <span class="token operator">=&gt;</span> a <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token comment">// 判断正数数组是否为空</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>ary<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 先排序，从小到大排序</span>
+    ary<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">-</span> b<span class="token punctuation">)</span>
+    <span class="token comment">// 如果第一个元素不是 1 直接返回 1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ary<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span>
+    
+    <span class="token comment">// 遍历，只要下一个元素和当前当前元素的差值 &gt; 1, 说明输出元素就是当前元素值 +1</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> ary<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>ary<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> ary<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> ary<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 如果数组是连续的正正数 如：[1,2,3]</span>
+    <span class="token keyword">return</span> ary<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span>  <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li><code>但是</code>： 上面的代码是可以优化的，从代码中可以看出，首选循环了两遍数组，先排序在差值，为什么不在排序时直接查找？</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">firstMissingPositive</span><span class="token punctuation">(</span><span class="token parameter">ary</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 首选过滤到非整数</span>
+  ary <span class="token operator">=</span> ary<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">a</span> <span class="token operator">=&gt;</span> a <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> min
+  <span class="token keyword">let</span> len <span class="token operator">=</span> ary<span class="token punctuation">.</span>length
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 假设当前数是最小数</span>
+    min <span class="token operator">=</span> ary<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果下一个数小于 min 交换交换位置</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>ary<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> a <span class="token operator">=</span> min
+        min <span class="token operator">=</span> ary<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        ary<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> a
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 有可能上面循环中交换了位置，改变了值</span>
+    ary<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> min
+    <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> min <span class="token operator">!==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ary<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> ary<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> ary<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> ary<span class="token punctuation">.</span>length <span class="token operator">?</span> arr<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ul><li><code>但是</code>： 其实上面的方式还是可以优化的，就是把 filter 拿掉，在循环中判断，但会增加 循环次数，要看数据的情况而定哪种方式最好。</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/js-algorithm/findKthLargest.html" class="prev">
+        数组中的第K个最大元素
+      </a></span> <span class="next"><a href="/blog/js-algorithm/restoreIpAddresses.html">
+        递归 复原 IP 地址
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.2a9e1d26.js" defer></script><script src="/blog/assets/js/2.b5c945b0.js" defer></script><script src="/blog/assets/js/53.bc5246ce.js" defer></script>
+  </body>
+</html>

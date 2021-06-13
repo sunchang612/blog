@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>为什么 React 要用 JSX | 阿畅的博客</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?831c09097cdcc6b28d4d8b82e7a2603b";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <meta name="description" content="JavaScript，Vue，React，Webpack，HTML，CSS等技术分享">
+    <meta name="author" content="achang">
+    <meta name="keywords" content="前端全栈知识体系， JavaScript， Vue， react， webpack， HTML， CSS，JavaScript算法">
+    <link rel="preload" href="/blog/assets/css/0.styles.8141bd51.css" as="style"><link rel="preload" href="/blog/assets/js/app.2a9e1d26.js" as="script"><link rel="preload" href="/blog/assets/js/2.b5c945b0.js" as="script"><link rel="preload" href="/blog/assets/js/88.6d380c7b.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1c9cb128.js"><link rel="prefetch" href="/blog/assets/js/100.d9c496b9.js"><link rel="prefetch" href="/blog/assets/js/101.2dbefcdd.js"><link rel="prefetch" href="/blog/assets/js/102.f49cba67.js"><link rel="prefetch" href="/blog/assets/js/11.c5365335.js"><link rel="prefetch" href="/blog/assets/js/12.20c384c5.js"><link rel="prefetch" href="/blog/assets/js/13.61f1338a.js"><link rel="prefetch" href="/blog/assets/js/14.f2c80a95.js"><link rel="prefetch" href="/blog/assets/js/15.fb46f9ec.js"><link rel="prefetch" href="/blog/assets/js/16.3c06bc72.js"><link rel="prefetch" href="/blog/assets/js/17.6b9fcc1c.js"><link rel="prefetch" href="/blog/assets/js/18.56735f47.js"><link rel="prefetch" href="/blog/assets/js/19.969cecdd.js"><link rel="prefetch" href="/blog/assets/js/20.a65e4dc5.js"><link rel="prefetch" href="/blog/assets/js/21.0e66da52.js"><link rel="prefetch" href="/blog/assets/js/22.f4fdebc1.js"><link rel="prefetch" href="/blog/assets/js/23.44d8c7d7.js"><link rel="prefetch" href="/blog/assets/js/24.e5051be4.js"><link rel="prefetch" href="/blog/assets/js/25.dcc79434.js"><link rel="prefetch" href="/blog/assets/js/26.00c15f45.js"><link rel="prefetch" href="/blog/assets/js/27.355b2a79.js"><link rel="prefetch" href="/blog/assets/js/28.68fd4985.js"><link rel="prefetch" href="/blog/assets/js/29.d84cc35f.js"><link rel="prefetch" href="/blog/assets/js/3.75a46af6.js"><link rel="prefetch" href="/blog/assets/js/30.3fb21238.js"><link rel="prefetch" href="/blog/assets/js/31.50b37b70.js"><link rel="prefetch" href="/blog/assets/js/32.869bfdb4.js"><link rel="prefetch" href="/blog/assets/js/33.b28c193b.js"><link rel="prefetch" href="/blog/assets/js/34.395eb3af.js"><link rel="prefetch" href="/blog/assets/js/35.c9607dd7.js"><link rel="prefetch" href="/blog/assets/js/36.406eefe2.js"><link rel="prefetch" href="/blog/assets/js/37.b2df7963.js"><link rel="prefetch" href="/blog/assets/js/38.9aacdff1.js"><link rel="prefetch" href="/blog/assets/js/39.34efcf53.js"><link rel="prefetch" href="/blog/assets/js/4.6b6fa8d7.js"><link rel="prefetch" href="/blog/assets/js/40.4d190766.js"><link rel="prefetch" href="/blog/assets/js/41.dcb0dea2.js"><link rel="prefetch" href="/blog/assets/js/42.4751f5ea.js"><link rel="prefetch" href="/blog/assets/js/43.1c65769a.js"><link rel="prefetch" href="/blog/assets/js/44.e2617f11.js"><link rel="prefetch" href="/blog/assets/js/45.284f7399.js"><link rel="prefetch" href="/blog/assets/js/46.4bfc2e64.js"><link rel="prefetch" href="/blog/assets/js/47.18b91d63.js"><link rel="prefetch" href="/blog/assets/js/48.0eb5b63f.js"><link rel="prefetch" href="/blog/assets/js/49.040a5bb1.js"><link rel="prefetch" href="/blog/assets/js/5.4f36be39.js"><link rel="prefetch" href="/blog/assets/js/50.280a74de.js"><link rel="prefetch" href="/blog/assets/js/51.1bff542f.js"><link rel="prefetch" href="/blog/assets/js/52.21278878.js"><link rel="prefetch" href="/blog/assets/js/53.bc5246ce.js"><link rel="prefetch" href="/blog/assets/js/54.da98e62c.js"><link rel="prefetch" href="/blog/assets/js/55.41da599e.js"><link rel="prefetch" href="/blog/assets/js/56.0e5b1be4.js"><link rel="prefetch" href="/blog/assets/js/57.b3233b28.js"><link rel="prefetch" href="/blog/assets/js/58.d3aefbaf.js"><link rel="prefetch" href="/blog/assets/js/59.b9cec5f9.js"><link rel="prefetch" href="/blog/assets/js/6.5101726b.js"><link rel="prefetch" href="/blog/assets/js/60.0dc2c6a9.js"><link rel="prefetch" href="/blog/assets/js/61.4f15fd19.js"><link rel="prefetch" href="/blog/assets/js/62.22e1fa3a.js"><link rel="prefetch" href="/blog/assets/js/63.42f92443.js"><link rel="prefetch" href="/blog/assets/js/64.56bf1bf7.js"><link rel="prefetch" href="/blog/assets/js/65.9f9ba7cc.js"><link rel="prefetch" href="/blog/assets/js/66.a0149269.js"><link rel="prefetch" href="/blog/assets/js/67.958096a6.js"><link rel="prefetch" href="/blog/assets/js/68.ce31b0f8.js"><link rel="prefetch" href="/blog/assets/js/69.e0b63645.js"><link rel="prefetch" href="/blog/assets/js/7.f595f157.js"><link rel="prefetch" href="/blog/assets/js/70.04ba63ca.js"><link rel="prefetch" href="/blog/assets/js/71.14a3e361.js"><link rel="prefetch" href="/blog/assets/js/72.fe00762e.js"><link rel="prefetch" href="/blog/assets/js/73.56200c06.js"><link rel="prefetch" href="/blog/assets/js/74.a609f591.js"><link rel="prefetch" href="/blog/assets/js/75.4bb00fd2.js"><link rel="prefetch" href="/blog/assets/js/76.81ee7781.js"><link rel="prefetch" href="/blog/assets/js/77.a36daa4b.js"><link rel="prefetch" href="/blog/assets/js/78.76314acb.js"><link rel="prefetch" href="/blog/assets/js/79.23710e07.js"><link rel="prefetch" href="/blog/assets/js/8.3a49e8ed.js"><link rel="prefetch" href="/blog/assets/js/80.79f1e427.js"><link rel="prefetch" href="/blog/assets/js/81.09e15374.js"><link rel="prefetch" href="/blog/assets/js/82.1457d6e3.js"><link rel="prefetch" href="/blog/assets/js/83.c037e760.js"><link rel="prefetch" href="/blog/assets/js/84.61a7ef93.js"><link rel="prefetch" href="/blog/assets/js/85.ef000657.js"><link rel="prefetch" href="/blog/assets/js/86.7bbe8636.js"><link rel="prefetch" href="/blog/assets/js/87.0b020f6e.js"><link rel="prefetch" href="/blog/assets/js/89.9a22d7e4.js"><link rel="prefetch" href="/blog/assets/js/9.4705cb4e.js"><link rel="prefetch" href="/blog/assets/js/90.e1d50ec8.js"><link rel="prefetch" href="/blog/assets/js/91.3f1edaa3.js"><link rel="prefetch" href="/blog/assets/js/92.6fa69482.js"><link rel="prefetch" href="/blog/assets/js/93.dc85e9dc.js"><link rel="prefetch" href="/blog/assets/js/94.2f42b212.js"><link rel="prefetch" href="/blog/assets/js/95.4bf7ddff.js"><link rel="prefetch" href="/blog/assets/js/96.ad15f572.js"><link rel="prefetch" href="/blog/assets/js/97.8615c32e.js"><link rel="prefetch" href="/blog/assets/js/98.df4af9cf.js"><link rel="prefetch" href="/blog/assets/js/99.6bb9e42c.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.8141bd51.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">阿畅的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/javascript/basics/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/interview/" class="nav-link">
+  js 面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/algorithm/" class="nav-link">
+  js 数据结构与算法
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/js-algorithm/" class="nav-link">
+  js 算法与数据结构
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/react/combat/" class="nav-link">
+  react
+</a></li><li class="dropdown-item"><!----> <a href="/blog/react/taro/" class="nav-link">
+  taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/Vue/principle/" class="nav-link">
+  Vue 原理
+</a></li><li class="dropdown-item"><!----> <a href="/blog/Vue/combat/" class="nav-link">
+  Vue 项目实战
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/webpack/" class="nav-link">
+  webpack
+</a></div><div class="nav-item"><a href="/blog/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/sequelize/" class="nav-link">
+  sequelize
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/css-html/" class="nav-link">
+  CSS+HTML
+</a></div><div class="nav-item"><a href="/blog/http/" class="nav-link">
+  http
+</a></div><div class="nav-item"><a href="https://github.com/sunchang1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/javascript/basics/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/interview/" class="nav-link">
+  js 面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/javascript/algorithm/" class="nav-link">
+  js 数据结构与算法
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/js-algorithm/" class="nav-link">
+  js 算法与数据结构
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/react/combat/" class="nav-link">
+  react
+</a></li><li class="dropdown-item"><!----> <a href="/blog/react/taro/" class="nav-link">
+  taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/Vue/principle/" class="nav-link">
+  Vue 原理
+</a></li><li class="dropdown-item"><!----> <a href="/blog/Vue/combat/" class="nav-link">
+  Vue 项目实战
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/webpack/" class="nav-link">
+  webpack
+</a></div><div class="nav-item"><a href="/blog/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/sequelize/" class="nav-link">
+  sequelize
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/css-html/" class="nav-link">
+  CSS+HTML
+</a></div><div class="nav-item"><a href="/blog/http/" class="nav-link">
+  http
+</a></div><div class="nav-item"><a href="https://github.com/sunchang1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>react 基础与原理</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>react 面试题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/react/interview/" class="sidebar-link">React 是什么？</a></li><li><a href="/blog/react/interview/react-jsx.html" class="active sidebar-link">为什么 React 要用 JSX</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/react/interview/question.html" class="sidebar-link">如果避免声明周期中的坑</a></li><li><a href="/blog/react/interview/question1.html" class="sidebar-link">类组件和函数组件的区别</a></li><li><a href="/blog/react/interview/question2.html" class="sidebar-link">如何设计 React 组件</a></li><li><a href="/blog/react/interview/question3.html" class="sidebar-link">如何面向组件跨组件通信</a></li><li><a href="/blog/react/interview/question4.html" class="sidebar-link">列举一种你了解的 React 状态管理框架</a></li><li><a href="/blog/react/interview/question5.html" class="sidebar-link">虚拟 DOM 的工作原理是什么</a></li><li><a href="/blog/react/interview/question6.html" class="sidebar-link">如何解释 React 的渲染流程</a></li><li><a href="/blog/react/interview/question7.html" class="sidebar-link">如何分析和调优性能瓶颈？</a></li><li><a href="/blog/react/interview/question8.html" class="sidebar-link">React Hook 的使用限制有哪些？</a></li><li><a href="/blog/react/interview/question9.html" class="sidebar-link">React-router 的实现原理及工作方式分别是什么？</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>taro</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/react/taro/" class="sidebar-link">taro canvas 生成海报</a></li><li><a href="/blog/react/taro/install.html" class="sidebar-link">安装指定的版本</a></li><li><a href="/blog/react/taro/qrcode.html" class="sidebar-link">小程序动态生成带参数的二维码</a></li><li><a href="/blog/react/taro/params-code.html" class="sidebar-link">小程序获取二维码中的参数</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="为什么-react-要用-jsx"><a href="#为什么-react-要用-jsx" class="header-anchor">#</a> 为什么 React 要用 JSX</h1> <p>到道题也不是说 JSX 的好处，而是先说为什么要用 JSX ，为啥不用其他的方式。</p> <p>主要考察两方面能力：
+技术广度：深挖知识面涉猎广度，对流行框架的模板方案是否熟悉了解
+技术调研能力</p> <p>使用 三步走技巧</p> <ol><li>一句话解释 JSX
+JSX 是一个 JavaScript 的语法扩展，或者说是一个类似于 XML 的 ECMAScript 语法扩展</li> <li>核心概念
+React 本身并不强制使用 JSX ，可以用 React.createElement，即使使用了 JSX，也会在构建过程中，通过 Babel 插件编译为 React.createElement,所以 JSX 更像是 React.createElement 的一种语法糖。从这可以看出 React 团队并不想引入 JavaScript 本身以外的开发体系，而是希望通过合理的关注点分离保持组件开发的纯粹性。</li> <li>方案对比</li></ol> <div class="language- extra-class"><pre><code>- 模板：React 团队认为模板不应该是开发过程中的关注点，因为引入了模板语法，模板指令等概念，是一种不佳的实现方案。
+- 模板字符串：模板字符串编写的结构会造成多次内部嵌套，使整个结构变得复杂，并且优化代码提示也变得困难重重。
+- JSON ：同样因为代码提示困难的原因而被放弃。
+- JSX：因为 JSX 与其设计思想贴合，不需要引入过多的新的概念，对编译器的代码提示也及其友好
+</code></pre></div><p>react的设计初衷：<font color="red">关注点分离</font>,在计算机科学中，是将代码分割为不同部分的设计原则是面向对象的程序设计的 ”核心概念“
+关注点分离的价值在于简化程序的开发和维护，当关注点分开时，各个部分可以重复使用，以及独立开发和更新具有特殊价值的是能够在稍微改进，而无须知道其他部分的细节必须对这些部分机型相应的更改。关注点的基本单位是”组件“。</p> <h3 id="答题"><a href="#答题" class="header-anchor">#</a> 答题</h3> <p>在回答问题之前，我首先解释下什么是 JSX 吧。JSX 是一个 JavaScript 的语法扩展，结构类似 XML。</p> <p>JSX 主要用于声明 React 元素，但 React 中并不强制使用 JSX。即使使用了 JSX，也会在构建过程中，通过 Babel 插件编译为 React.createElement。所以 JSX 更像是 React.createElement 的一种语法糖。</p> <p>所以从这里可以看出，React 团队并不想引入 JavaScript 本身以外的开发体系。而是希望通过合理的关注点分离保持组件开发的纯粹性。</p> <p>接下来与 JSX 以外的三种技术方案进行对比。</p> <p>首先是模板，React 团队认为模板不应该是开发过程中的关注点，因为引入了模板语法、模板指令等概念，是一种不佳的实现方案。</p> <p>其次是模板字符串，模板字符串编写的结构会造成多次内部嵌套，使整个结构变得复杂，并且优化代码提示也会变得困难重重。</p> <p>最后是 JXON，同样因为代码提示困难的原因而被放弃。</p> <p>所以 React 最后选用了 JSX，因为 JSX 与其设计思想贴合，不需要引入过多新的概念，对编辑器的代码提示也极为友好。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/react/interview/" class="prev router-link-active">
+        React 是什么？
+      </a></span> <span class="next"><a href="/blog/react/interview/question.html">
+        如果避免声明周期中的坑
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.2a9e1d26.js" defer></script><script src="/blog/assets/js/2.b5c945b0.js" defer></script><script src="/blog/assets/js/88.6d380c7b.js" defer></script>
+  </body>
+</html>

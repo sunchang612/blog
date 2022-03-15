@@ -98,6 +98,36 @@ Promise.allSettled(promises).
 2. 单次执行
 - Promise 处理的问题都是“一次性”的，因为一个 Promise 实例只能 resolve 或 reject 一次，所以面对某些需要持续响应的场景时就会变得力不从心。比如上传文件获取进度时，默认采用的就是通过事件监听的方式来实现。
 
+## 多个 Promise 并行执行
+
+- 例如下面代码
+```js
+Promise.resolve().then(() => {
+  console.log(0)
+  return Promise.resolve(4)
+}).then((res) => {
+  console.log(res)
+})
+
+Promise.resolve().then(() => {
+  console.log(1)
+}).then(() => {
+  console.log(2)
+}).then(() => {
+  console.log(3)
+}).then(() => {
+  console.log(5)
+}).then(() =>{
+  console.log(6)
+})
+```
+- 执行结果是什么？
+答案：1、2、3、4、5、6
+- 问题1 为什么
+  - 因为有多个 fulfilled Promise 实例，同时执行链式调用，<font color="red">then 会交替执行</font>（这是一个编译器的优化，防止一个promise 执行太多时间，占据太久）
+- 问题2 为什么4 会在 3 后执行，不是在 2 后执行
+  - .then 中返回的 promise 实例，后面的打印会比其它的 promise.then <strong>“慢两次”</strong>
+  - 这两次分别是： 1 promise 的状态由 pending 变成 fulfilled， 2. .then 函数挂载到微任务队里中 
 ## 手写 Promise
 - Promise/A+ 的规范
 Promise 是一个对象或函数，对外提供了一个 then 函数，内部拥有3个状态

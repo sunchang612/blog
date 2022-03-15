@@ -7,7 +7,7 @@
 4. section : 定义文档中的节（section、区段）
 5. article : 定义页面独立的内容区域
 6. aside   : 定义页面的侧边栏内容
-7. detailes: 用于描述文档或文档某个部分的细节
+7. details: 用于描述文档或文档某个部分的细节
 8. summary : 标签包含 details 元素的标题
 9. dialog  : 定义对话框，比如提示框
 
